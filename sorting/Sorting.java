@@ -12,7 +12,7 @@ public class Sorting {
 				System.out.println("press 1 to Bubble Sort");
 				System.out.println("press 2 to Selection Sort");
 				System.out.println("press 3 to Insertion Sort");
-				System.out.println("press 4 to deleteRear");
+				System.out.println("press 4 to Merge Sort");
 				System.out.println("press 5 to display");
 				System.out.println("enter your choice");
 				int choice=scan.nextInt();
@@ -20,11 +20,65 @@ public class Sorting {
 				case 1:bubble_sort(ar);break;
 				case 2:selection_sort(ar);break;
 				case 3:insertion_sort(ar);break;
+				case 4:merge_sort(ar);break;
 				default :System.out.println("program terminated :-((");System.exit(0);
 				}
 			}
 	}
 
+	 /*
+	  * Merge sort starts
+	  */
+	private static void merge_sort(int[] ar) {
+		int n=ar.length;
+		divide(ar,0,n-1);
+		System.out.println(Arrays.toString(ar));
+	}
+	
+	private static void divide(int[] ar, int si, int ei) {
+		if(si >= ei){
+			return;
+		}
+		int mid= si+(ei-si)/2;
+		divide(ar, si, mid);
+		divide(ar, mid+1, ei);
+		conquer(ar, si, mid, ei);
+	}
+
+	private static void conquer(int[] ar, int si, int mid, int ei) {
+		int[] merged = new int[ei-si+1];
+		int indx1 = si;
+		int indx2 = mid+1;
+		int k=0;
+		
+		while(indx1 <= mid && indx2 <= ei){
+			if(ar[indx1] <= ar[indx2]){
+				merged[k++]=ar[indx1++];
+				//k++;indx1++;
+			}else{
+				merged[k++]=ar[indx2++];
+			}
+		}
+		
+		while(indx1 <= mid){
+			merged[k++]=ar[indx1++];
+		}
+		
+		while(indx2 <= ei){
+			merged[k++]=ar[indx2++];
+		}
+		
+		
+		for(int i=0,j=si; i<merged.length; i++,j++){
+			ar[j]=merged[i];
+		}
+	}
+	/*
+	 * Merged sort ended
+	 */
+	
+	
+	
 	/*
 	 * all items to the left are smaller
 	 */
