@@ -13,7 +13,7 @@ public class Sorting {
 				System.out.println("press 2 to Selection Sort");
 				System.out.println("press 3 to Insertion Sort");
 				System.out.println("press 4 to Merge Sort");
-				System.out.println("press 5 to display");
+				System.out.println("press 5 to Heap Sort");
 				System.out.println("enter your choice");
 				int choice=scan.nextInt();
 				switch(choice) {
@@ -21,12 +21,56 @@ public class Sorting {
 				case 2:selection_sort(ar);break;
 				case 3:insertion_sort(ar);break;
 				case 4:merge_sort(ar);break;
+				case 5:heap_sort(ar);break;
 				default :System.out.println("program terminated :-((");System.exit(0);
 				}
 			}
 	}
 
 	 /*
+	  * Heap sort starts
+	  */
+	 private static void heap_sort(int[] ar) {
+		 int n=ar.length;
+		 for(int i=n/2-1 ; i>=0; i--){
+			 heapify(ar,n,i);
+		 }
+		 
+		 for( int i=n-1 ; i>=0 ; i--){
+			 int temp=ar[0];
+			 ar[0]=ar[i];
+			 ar[i]=temp;
+			 heapify(ar,i,0);
+		 }
+		 System.out.println(Arrays.toString(ar));
+	 }
+	 
+	 private static int[] heapify(int[] ar, int n, int i) {
+		
+		 int left = 2 * i + 1;
+		 int right = 2 * i + 2;
+		 int largest = i;
+		 
+		 if(left < n && ar[left]>ar[largest]){
+			 largest = left;
+		 }
+		 if(right < n && ar[right]>ar[largest]){
+			 largest = right;
+		 }
+		 
+		 if(largest !=i ){
+			 int temp = ar[largest];
+			 ar[largest] = ar[i];
+			 ar[i] = temp;
+			 heapify(ar,n,largest);
+		 }
+		 return ar;
+	 }
+	 /*
+	  * Heap sort ends
+	  */
+
+	/*
 	  * Merge sort starts
 	  */
 	private static void merge_sort(int[] ar) {
@@ -67,8 +111,7 @@ public class Sorting {
 		while(indx2 <= ei){
 			merged[k++]=ar[indx2++];
 		}
-		
-		
+
 		for(int i=0,j=si; i<merged.length; i++,j++){
 			ar[j]=merged[i];
 		}
@@ -99,8 +142,10 @@ public class Sorting {
 //					--j;
 //				}
 			}
+			System.out.println(Arrays.toString(arr));
 	}
 
+	
 	private static void selection_sort(int[] ar) {
 		int k=0,j;
 		for(int i=0;i<ar.length ;i++){
