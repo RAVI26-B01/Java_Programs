@@ -10,6 +10,17 @@ public class ArrayRotation90 {
 
 	private static void rotateArray(int[][] matrix) {
 	      
+		for(int i=0;i<matrix.length ;i++) {
+			for(int j=0; j<matrix.length ;j++) {
+				System.out.print(matrix[i][j]);
+				System.out.print(" ");
+			}
+			System.out.println();
+		}
+		System.out.println();
+		
+		
+		//transpose of a matrix m[i][j]=m[j][i];
 		for(int i = 0; i<matrix.length; i++){
 	            for(int j = i; j<matrix[0].length; j++){
 	                int temp = 0;
@@ -43,6 +54,10 @@ public class ArrayRotation90 {
 	                matrix[matrix.length-1-i][j] = temp;
 	            }
 	        }
+		
+
+	
+		
 		
 		for(int i=0;i<matrix.length ;i++) {
 			for(int j=0; j<matrix.length ;j++) {
