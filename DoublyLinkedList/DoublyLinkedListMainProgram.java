@@ -14,6 +14,8 @@ public class DoublyLinkedListMainProgram {
 				System.out.println("press 3 to deleteFront");
 				System.out.println("press 4 to deleteRear");
 				System.out.println("press 5 to display");
+				System.out.println("press 6 to search an element");
+				
 				System.out.println("enter your choice");
 				int choice=scan.nextInt();
 					switch(choice) {
@@ -22,6 +24,7 @@ public class DoublyLinkedListMainProgram {
 						case 3:ll.delete_front();break;
 						case 4:ll.delete_rear();break;
 						case 5:ll.show();break;
+						case 6:ll.search();break;
 						default :System.out.println("program terminated :-((");System.exit(0);
 					}
 				}
@@ -58,6 +61,33 @@ class DoublyLinkedList{
 		
 	}
 	
+	public void search() {
+		Node temp;
+		Scanner scan=new Scanner(System.in);
+		System.out.print("Enter element to be Searched :");
+		int item=scan.nextInt();
+		if(head==null) {
+			System.out.println("Seach not possible");
+		}
+		else if(head.rnext==null)
+		{
+			if(item == head.data){
+				System.out.println("Element found");
+			}
+		}else{
+			temp=head;
+			while(temp.rnext!=null){
+				if(temp.data == item){
+					System.out.println("Element found :-)");
+					System.exit(0);
+				}
+				temp=temp.rnext;
+			}
+			System.out.println("Element not found");
+		}
+		
+	}
+
 	public void delete_front() {
 		Node temp;
 		if(head==null) {
