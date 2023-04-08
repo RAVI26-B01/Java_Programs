@@ -17,7 +17,7 @@ public class SinglyLinkedList {
 			System.out.println("Press 8 to Display");
 			System.out.println("Press 9 to Reverse");
 			System.out.println("Press 10 to find middle element in single pass");
-			
+			System.out.println("Press 11 Move last element to first");
 			
 			int key=scan.nextInt();  
 			switch (key) {
@@ -31,6 +31,7 @@ public class SinglyLinkedList {
 			case 8:display();break;
 			case 9:Reverse_a_List();break;
 			case 10:FindMiddleNodeInSinglePass();break;
+			case 11:MoveLastElementToFirst();break;
 			
 			default:System.exit(0);
 				break;
@@ -38,6 +39,25 @@ public class SinglyLinkedList {
 		}
 	}
 	
+
+	private static void MoveLastElementToFirst() {
+		Node temp = null;
+		Node lastEle =null;
+		if(head !=null && head.next !=null){
+			temp=head;
+			while(temp.next.next!=null){
+				temp=temp.next;
+			}
+			lastEle=temp.next;
+			temp.next=null;
+			
+			lastEle.next=head;
+			head=lastEle;
+			
+		}
+		display();
+	}
+
 
 	private static void Delete_Duplicates() {
 		if(head==null) {
