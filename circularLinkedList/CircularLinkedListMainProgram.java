@@ -24,8 +24,8 @@ public class CircularLinkedListMainProgram {
 			int choice=scan.nextInt();
 				switch(choice) {
 					case 1:cl.insert_front();break;
-//					case 2:ll.insert_rear();break;
-//					case 3:ll.delete_front();break;
+					case 2:cl.insert_rear();break;
+					case 3:cl.delete_front();break;
 //					case 4:ll.delete_rear();break;
 					case 5:cl.display();break;
 //					case 6:ll.search();break;
@@ -65,6 +65,46 @@ class CircularLinkedList{
 			head=node;
 		}
 		
+	}
+	public void delete_front() {
+		Node temp,x;
+		if(head==null){
+			System.err.println("Deletion not possible");
+		}
+		else if(head.next==head){
+			System.err.println("Element deleted is :"+ head.data);
+			head.next=null;
+		}
+		else{
+			temp=head;
+			x=head;
+			while(temp.next!=head){
+				temp=temp.next;
+			}
+			System.err.println("Element deleted is :"+ head.data);
+			head=head.next;
+			temp.next=head;
+			x.next=null;
+		}
+	}
+	public void insert_rear() {
+		Scanner scan=new Scanner(System.in);
+		System.out.print("Enter item to insert :");
+		int item=scan.nextInt();
+		Node node=new Node();
+		node.data=item;
+		node.next=node;
+		Node temp;
+		if(head==null) {
+			head=node;
+		}else{
+			temp=head;
+			while(temp.next!=head){
+				temp=temp.next;
+			}
+			temp.next=node;
+			node.next=head;
+		}
 	}
 	public void display() {
 		Node temp = head;
