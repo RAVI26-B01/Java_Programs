@@ -26,7 +26,7 @@ public class CircularLinkedListMainProgram {
 					case 1:cl.insert_front();break;
 					case 2:cl.insert_rear();break;
 					case 3:cl.delete_front();break;
-//					case 4:ll.delete_rear();break;
+					case 4:cl.delete_rear();break;
 					case 5:cl.display();break;
 //					case 6:ll.search();break;
 					default :System.out.println("program terminated :-((");System.exit(0);
@@ -66,6 +66,24 @@ class CircularLinkedList{
 		}
 		
 	}
+	public void delete_rear() {
+		Node temp;
+		if(head==null){
+			System.err.println("Deletion not possible");
+		}
+		else if(head.next==head){
+			System.err.println("Element deleted is :"+ head.data);
+			head=null;
+		}
+		else{
+			temp=head;
+			while(temp.next.next!=head){
+				temp=temp.next;
+			}
+			System.err.println("Element deleted is :"+ temp.next.data);
+			temp.next=head;
+		}
+	}
 	public void delete_front() {
 		Node temp,x;
 		if(head==null){
@@ -73,7 +91,7 @@ class CircularLinkedList{
 		}
 		else if(head.next==head){
 			System.err.println("Element deleted is :"+ head.data);
-			head.next=null;
+			head=null;
 		}
 		else{
 			temp=head;
