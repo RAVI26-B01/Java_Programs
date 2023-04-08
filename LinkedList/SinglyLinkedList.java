@@ -18,6 +18,7 @@ public class SinglyLinkedList {
 			System.out.println("Press 9 to Reverse");
 			System.out.println("Press 10 to find middle element in single pass");
 			System.out.println("Press 11 Move last element to first");
+			System.out.println("Press 12 to check Palindrome or not");
 			
 			int key=scan.nextInt();  
 			switch (key) {
@@ -32,13 +33,13 @@ public class SinglyLinkedList {
 			case 9:Reverse_a_List();break;
 			case 10:FindMiddleNodeInSinglePass();break;
 			case 11:MoveLastElementToFirst();break;
+			case 12:CheckPalindrome();break;
 			
 			default:System.exit(0);
 				break;
 			} 
 		}
 	}
-	
 
 	private static void MoveLastElementToFirst() {
 		Node temp = null;
@@ -285,5 +286,85 @@ public class SinglyLinkedList {
 			head=node;
 		}
 	}
+	
+	private static void CheckPalindrome() {
+	
+		int length=0;
+		Node fast=head,secondHalf;
+		Node slow=head;
+		while(fast.next!=null){
+			length++;
+			if(length%2==0)
+				slow=slow.next;
+			fast=fast.next;
+		}
+		secondHalf=slow.next;
+		slow.next=null;
+		
+//			while(secondHalf!=null){
+//				System.out.print(secondHalf.data+" ");
+//				secondHalf=secondHalf.next;
+//			}
+//			System.out.println();
+//			
+//			while(head!=null){
+//				System.out.print(head.data+" ");
+//				head=head.next;
+//			}
+//			System.out.println();
+			Node reverse_a_Node = reverse_a_Node(secondHalf);
+			boolean compare = compare(head, reverse_a_Node);
+			if(compare)
+				System.out.println("Palindrome");
+			else
+				System.out.println("Not-Palindrome");
+			Node reverse_a_Node2 = reverse_a_Node(reverse_a_Node);
+			slow.next=reverse_a_Node2;
+
+	}
+	
+public static boolean compare(Node list1, Node list2) {
+		
+		Node temp1 = list1;
+		Node temp2 = list2;
+		
+		while(temp1!=null && temp2!=null){
+			if(temp1.data == temp2.data){
+				temp1=temp1.next;
+				temp2=temp2.next;
+			}else
+				return false;
+		}
+		if(temp1==null || temp2==null){
+			return true;
+		}
+		return false;
+	}
+
+private static Node reverse_a_Node(Node list) {
+	Node temp=list;
+	if(temp==null) {
+		System.err.println("Reverse Not Possible");
+	}
+	else if(temp.next==null) {
+		System.err.println("Only one elemnt is present No need to reverse");
+	}
+	else{
+		Node x=temp;
+		Node y=temp.next;
+		Node z=temp.next.next;
+		while(y!=null){
+			y.next=x;
+			x=y;
+			y=z;
+			if(z!=null)
+				z=z.next;
+		}
+		temp.next=null;
+		temp=x;
+	}
+	return temp;
 }
 
+
+}
