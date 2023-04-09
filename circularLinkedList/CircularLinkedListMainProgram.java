@@ -18,7 +18,7 @@ public class CircularLinkedListMainProgram {
 			System.out.println("press 3 to deleteFront");
 			System.out.println("press 4 to deleteRear");
 			System.out.println("press 5 to display");
-			System.out.println("press 6 to search an element");
+			System.out.println("press 6 to check Circularity");
 			
 			System.out.println("enter your choice");
 			int choice=scan.nextInt();
@@ -28,7 +28,7 @@ public class CircularLinkedListMainProgram {
 					case 3:cl.delete_front();break;
 					case 4:cl.delete_rear();break;
 					case 5:cl.display();break;
-//					case 6:ll.search();break;
+					case 6:cl.check_circular();break;
 					default :System.out.println("program terminated :-((");System.exit(0);
 				}
 			}
@@ -65,6 +65,29 @@ class CircularLinkedList{
 			head=node;
 		}
 		
+	}
+	public void check_circular() {
+		Node slow,fast;
+		if(head==null){
+			System.err.println("No element found");
+		}
+		else if(head.next==head){
+			System.out.println("Circular");
+		}else{
+			 slow=head;
+			 fast=head;
+			 while(slow!=null && head!=null){
+				 slow=slow.next;
+				 fast=fast.next.next;
+				 if(fast == slow){
+					 System.out.println("circular");
+					 System.exit(0);
+				 }
+			 }
+			 System.out.println("Not-circular");
+			 
+			 
+		}
 	}
 	public void delete_rear() {
 		Node temp;
