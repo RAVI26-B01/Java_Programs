@@ -83,8 +83,8 @@ class CircularLinkedList{
 				y=z;
 				z=z.next;
 			}
+			head.next=x;
 			head=x;
-			head.next=z;
 		}
 	}
 	public void check_circular() {
