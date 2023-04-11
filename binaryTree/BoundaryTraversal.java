@@ -9,7 +9,7 @@ public class BoundaryTraversal {
 	public ArrayList<Integer> PrintBoundary(Node node){
 		ArrayList<Integer> ans = new ArrayList<>();
 		if(!isLeaf(node))
-			ans.add(node.data);
+			ans.add(node.data); // root node will be pushed first
 		addLeftBoundary(node,ans);
 		addleaves(node,ans);
 		addRightBoundary(node,ans);
@@ -35,10 +35,10 @@ public class BoundaryTraversal {
 		
 		while(cur!=null){
 			if(!isLeaf(cur)){
-				temp.add(cur.data);
+				temp.add(cur.data);   //if not leaves push element.
 			}
-			if(cur.right!=null)
-				cur=cur.right;
+			if(cur.right!=null)		// if current node is not having right then move to left else
+				cur=cur.right;		// move node right and neglect left.
 			else
 				cur=cur.left;
 		}
@@ -52,7 +52,7 @@ public class BoundaryTraversal {
 			if(!isLeaf(cur)){
 				ans.add(cur.data);
 			}
-			if(cur.left!=null)
+			if(cur.left!=null)		// if current node is not having left then move to right
 				cur=cur.left;
 			else
 				cur=cur.right;
@@ -60,6 +60,6 @@ public class BoundaryTraversal {
 	}	
 
 	private boolean isLeaf(Node node) {
-		return (node.left == null && node.right == null);
+		return (node.left == null && node.right == null);	// check of leaf node or not.
 	}
 }

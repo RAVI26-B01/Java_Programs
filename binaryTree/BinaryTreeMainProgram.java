@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Queue;
 import java.util.Scanner;
-import java.util.TreeMap;
 
 
 class Node{
@@ -43,12 +41,14 @@ public class BinaryTreeMainProgram {
 					case 6:zigZagOrderTraversal(root);break;
 					case 7:maximunDepth(root);break;
 					case 8:topView(root);break;
-					case 10:leftView();break;
+					case 9:leftView(root);break;
+					case 10:rightView(root);break;
 					case 11:boundaryTraversal(root);break;
 					default :System.out.println("program terminated :-((");System.exit(0);
 				}
 			}
 	}
+
 
 		private static void insert() {
 			Scanner scan=new Scanner(System.in);
@@ -84,23 +84,6 @@ public class BinaryTreeMainProgram {
 			}
 		}
 		
-		
-		private static  void leftView() {
-			max_level=0;
-			leftViewOfTree(root,1);
-		}
-		private static void leftViewOfTree(Node current, int level) {
-			
-			if(current==null)
-				return;
-			if(max_level < level){
-				System.out.print(current.data+" ");
-				max_level=level;
-			}
-			leftViewOfTree(current.left, level+1);
-			leftViewOfTree(current.right, level+1);
-		}
-		
 		private static void preorderTraversal(Node current) {
 			if(current!=null){
 				System.out.print(current.data+" ");
@@ -108,7 +91,6 @@ public class BinaryTreeMainProgram {
 				preorderTraversal(current.right);
 			}
 		}
-		
 		
 		private static void inorderTraversal(Node current) {
 			if(current!=null){
@@ -193,32 +175,22 @@ public class BinaryTreeMainProgram {
 		
 
 		private static void topView(Node current) {
-			List<Integer> ans = new ArrayList<>();
-			if(current==null)
-				return;
-			Map<Integer,Integer> map = new TreeMap<>();
-			Queue<Pair> queue = new LinkedList<>();
-			queue.add(new Pair(current,0));
-			while(!queue.isEmpty()){
-				Pair remove = queue.remove();
-				int hd = remove.hd;
-				Node temp = remove.node;
-				if(!map.containsKey(hd))
-					map.put(hd, temp.data);
-				
-				if(temp.left!=null){
-					queue.add(new Pair(temp.left,hd-1));
-				}
-				if(temp.right!=null){
-					queue.add(new Pair(temp.right,hd+1));
-				}
+			TreeViews view = new TreeViews();
+			List<Integer> topView = view.topView(current);
+			System.out.println(topView);
 		}
-			
-			map.entrySet().stream().forEach(x->System.out.print(x.getValue()+" "));
-			System.out.println();
+
+		private static  void leftView(Node current) {
+			TreeViews view = new TreeViews();
+			List<Integer> leftView = view.leftView(current);
+			System.out.println(leftView);
 		}
 		
-		
+		private static void rightView(Node current) {
+			TreeViews view = new TreeViews();
+			List<Integer> rightView = view.rightView(current);
+			System.out.println(rightView);
+		}
 		
 		private static void boundaryTraversal(Node root2) {
 			BoundaryTraversal bt = new BoundaryTraversal();
