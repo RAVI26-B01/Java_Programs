@@ -1,11 +1,13 @@
 package binaryTree;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 
 class Node{
@@ -25,7 +27,9 @@ public class BinaryTreeMainProgram {
 			System.out.println("press 5 to Level-Order");
 			System.out.println("press 6 to Zig_Zag-Order");
 			System.out.println("press 7 to Maximun-Depth");
+			System.out.println("press 8 to Top-View");
 			System.out.println("press 10 to left view Elements");
+			System.out.println("press 11 to Boundary traversal");
 			System.out.println();
 			
 			System.out.println("enter your choice");
@@ -38,13 +42,13 @@ public class BinaryTreeMainProgram {
 					case 5:leverOrderTraversal(root);break;
 					case 6:zigZagOrderTraversal(root);break;
 					case 7:maximunDepth(root);break;
+					case 8:topView(root);break;
 					case 10:leftView();break;
-				//	case 6:ll.search();break;
+					case 11:boundaryTraversal(root);break;
 					default :System.out.println("program terminated :-((");System.exit(0);
 				}
 			}
 	}
-		
 
 		private static void insert() {
 			Scanner scan=new Scanner(System.in);
@@ -186,4 +190,51 @@ public class BinaryTreeMainProgram {
 			int r=max_depth(current.right);
 			return 1+Math.max(l, r);
 		}
+		
+
+		private static void topView(Node current) {
+			List<Integer> ans = new ArrayList<>();
+			if(current==null)
+				return;
+			Map<Integer,Integer> map = new TreeMap<>();
+			Queue<Pair> queue = new LinkedList<>();
+			queue.add(new Pair(current,0));
+			while(!queue.isEmpty()){
+				Pair remove = queue.remove();
+				int hd = remove.hd;
+				Node temp = remove.node;
+				if(!map.containsKey(hd))
+					map.put(hd, temp.data);
+				
+				if(temp.left!=null){
+					queue.add(new Pair(temp.left,hd-1));
+				}
+				if(temp.right!=null){
+					queue.add(new Pair(temp.right,hd+1));
+				}
+		}
+			
+			map.entrySet().stream().forEach(x->System.out.print(x.getValue()+" "));
+			System.out.println();
+		}
+		
+		
+		
+		private static void boundaryTraversal(Node root2) {
+			BoundaryTraversal bt = new BoundaryTraversal();
+			ArrayList<Integer> printBoundary = bt.PrintBoundary(root2);
+			System.out.println(printBoundary);
+		}
 }
+
+class Pair{
+	
+	Node node;
+	int hd;
+	public Pair(Node current, int i) {
+		this.node=current;
+		this.hd=i;
+	}
+}
+
+
