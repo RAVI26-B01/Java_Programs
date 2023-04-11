@@ -1,5 +1,7 @@
 package binaryTree;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -21,6 +23,7 @@ public class BinaryTreeMainProgram {
 			System.out.println("press 3 to In-Order");
 			System.out.println("press 4 to Post-Order");
 			System.out.println("press 5 to Level-Order");
+			System.out.println("press 6 to Zig_Zag-Order");
 			System.out.println("press 7 to Maximun-Depth");
 			System.out.println("press 10 to left view Elements");
 			System.out.println();
@@ -33,6 +36,7 @@ public class BinaryTreeMainProgram {
 					case 3:inorderTraversal(root);break;
 					case 4:postorderTraversal(root);break;
 					case 5:leverOrderTraversal(root);break;
+					case 6:zigZagOrderTraversal(root);break;
 					case 7:maximunDepth(root);break;
 					case 10:leftView();break;
 				//	case 6:ll.search();break;
@@ -141,6 +145,32 @@ public class BinaryTreeMainProgram {
 			System.out.println(ans);
 			}
 		
+		private static void zigZagOrderTraversal(Node current) {
+			Queue<Node> queue = new LinkedList<>();
+			List<List<Integer>> ans = new LinkedList<List<Integer>>();
+			if(current == null){
+				return;
+			}
+			queue.offer(current);
+			boolean leftToRight = true;
+			while(!queue.isEmpty()){
+				int levelNums = queue.size();
+				List<Integer> subList = new LinkedList<>();
+				for( int i=0 ;i<levelNums ; i++){
+					if(queue.peek().left!=null)
+						queue.offer(queue.peek().left);
+					if(queue.peek().right!=null)
+						queue.offer(queue.peek().right);
+					subList.add(queue.poll().data);
+					
+				}
+				if(!leftToRight)
+					Collections.reverse(subList);
+				ans.add(subList);
+				leftToRight=!leftToRight;
+			}
+			System.out.println(ans);
+			}
 		
 
 		private static void maximunDepth(Node current) {
