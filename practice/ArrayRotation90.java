@@ -14,7 +14,7 @@ public class ArrayRotation90 {
 			for(int j=0; j<matrix.length ;j++) {
 				System.out.print(matrix[i][j]);
 				System.out.print(" ");
-			}
+			}   
 			System.out.println();
 		}
 		System.out.println();
