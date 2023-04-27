@@ -44,6 +44,7 @@ public class BinaryTreeMainProgram {
 					case 9:leftView(root);break;
 					case 10:rightView(root);break;
 					case 11:boundaryTraversal(root);break;
+					case 12:deepestLeavesSum(root);break;
 					default :System.out.println("program terminated :-((");System.exit(0);
 				}
 			}
@@ -196,6 +197,12 @@ public class BinaryTreeMainProgram {
 			BoundaryTraversal bt = new BoundaryTraversal();
 			ArrayList<Integer> printBoundary = bt.PrintBoundary(root2);
 			System.out.println(printBoundary);
+		}
+		
+		private static void deepestLeavesSum(Node root) {
+			DeepestLeavesSum sum = new DeepestLeavesSum(); 
+			int deepestLeavesSum = sum.deepestLeavesSum(root);
+			System.out.println(deepestLeavesSum);
 		}
 }
 
