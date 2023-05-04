@@ -200,9 +200,9 @@ public class BinaryTreeMainProgram {
 		}
 		
 		private static void deepestLeavesSum(Node root) {
-			DeepestLeavesSum sum = new DeepestLeavesSum(); 
-			int deepestLeavesSum = sum.deepestLeavesSum(root);
-			System.out.println(deepestLeavesSum);
+//			DeepestLeavesSum sum = new DeepestLeavesSum(); 
+//			int deepestLeavesSum = sum.deepestLeavesSum(root);
+//			System.out.println(deepestLeavesSum);
 		}
 }
 
