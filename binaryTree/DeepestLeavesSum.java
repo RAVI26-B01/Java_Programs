@@ -1,7 +1,9 @@
 package binaryTree;
 
 public class DeepestLeavesSum {
-
+/*
+ * approach 1
+ */
 	 int sum = 0;
 	    public int deepestLeavesSum(Node root) {
 	        int dep = depth(root);
@@ -26,5 +28,27 @@ public class DeepestLeavesSum {
 	            LeaveSum(root.right, depth, curr+1);
 	        }
 	    }
+	    
+	    
+	    /*
+	     * approach 2
+	     
+	    public int deepestLeavesSum(Node root) {
+	        harsh(root,0);
+	        return s;
+	    }
+	    int l=0,s=0;
+	    public void harsh(Node root,int len){
+	        if(root.left==null&&root.right==null){
+	            if(len>l){
+	                s=0;
+	                l=len;
+	            }
+	            if(len==l) s+=root.data;
+	        }
+	        if(root.left!=null) harsh(root.left,len+1);
+	        if(root.right!=null) harsh(root.right,len+1);
+	    }
+	    */
 	}
 

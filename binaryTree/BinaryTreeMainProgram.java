@@ -85,7 +85,7 @@ public class BinaryTreeMainProgram {
 			}
 		}
 		
-		private static void preorderTraversal(Node current) {
+		private static  void preorderTraversal(Node current) {
 			if(current!=null){
 				System.out.print(current.data+" ");
 				preorderTraversal(current.left);
