@@ -28,6 +28,8 @@ public class BinaryTreeMainProgram {
 			System.out.println("press 8 to Top-View");
 			System.out.println("press 10 to left view Elements");
 			System.out.println("press 11 to Boundary traversal");
+			System.out.println("press 12 to Deepest Leaves sum");
+			System.out.println("press 13 to Reverse odd levels");
 			System.out.println();
 			
 			System.out.println("enter your choice");
@@ -45,11 +47,11 @@ public class BinaryTreeMainProgram {
 					case 10:rightView(root);break;
 					case 11:boundaryTraversal(root);break;
 					case 12:deepestLeavesSum(root);break;
+					case 13:reverseOddLevels(root);break;
 					default :System.out.println("program terminated :-((");System.exit(0);
 				}
 			}
 	}
-
 
 		private static void insert() {
 			Scanner scan=new Scanner(System.in);
@@ -200,9 +202,14 @@ public class BinaryTreeMainProgram {
 		}
 		
 		private static void deepestLeavesSum(Node root) {
-			DeepestLeavesSum sum = new DeepestLeavesSum(); 
-			int deepestLeavesSum = sum.deepestLeavesSum(root);
-			System.out.println(deepestLeavesSum);
+//			DeepestLeavesSum sum = new DeepestLeavesSum(); 
+//			int deepestLeavesSum = sum.deepestLeavesSum(root);
+//			System.out.println(deepestLeavesSum);
+		}
+		
+		private static void reverseOddLevels(Node root2) {
+			ReverseOddLevels oddLevels = new ReverseOddLevels();
+			oddLevels.reverseOddLevels(root2);
 		}
 }
 
