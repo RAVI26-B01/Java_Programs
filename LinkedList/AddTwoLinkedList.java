@@ -125,8 +125,8 @@ public static void printList()
 //Driver code
 public static void main(String[] args)
 {
-	int arr1[] = { 5,6,7 };
-	int arr2[] = { 1, 8 };
+	int arr1[] = { 3,4,2 };
+	int arr2[] = { 4,6,5};
 
 
 	// Create first list as 5->6->7
