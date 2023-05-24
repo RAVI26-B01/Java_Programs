@@ -13,7 +13,6 @@ public class PushDominoes_838 {
 		char[] dominoesArray = dominoes.toCharArray();
 		for(int i=0; i<n ;i++ ) {
 			char c= dominoesArray[i];
-			if()
 		}
 		
 		return dominoes;
