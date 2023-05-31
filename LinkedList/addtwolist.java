@@ -19,7 +19,7 @@ public class addtwolist {
 	
 	public static void main(String[] args) {
 
-		int arr1[] = { 5,6,7 };
+		int arr1[] = { 5, 6, 7 };
 		int arr2[] = { 1, 8 };
 
 
@@ -50,8 +50,8 @@ public class addtwolist {
 		
 		int sum=0;
 		int carry=0;
-		Stack<Integer> s1=new Stack();
-		Stack<Integer> s2=new Stack();
+		Stack<Integer> s1=new Stack<>();
+		Stack<Integer> s2=new Stack<>();
 		while(l1!=null){
 			s1.push(l1.data);
 			l1=l1.next;
@@ -62,7 +62,8 @@ public class addtwolist {
 		}
 		
 		while(!s1.empty() || !s2.empty()){
-			int a=0; int b=0;
+			int a=0; 
+			int b=0;
 			if(!s1.isEmpty()){
 				a=s1.pop();
 			}
@@ -76,7 +77,7 @@ public class addtwolist {
 			int rem=sum%10;
 			
 			Node temp=new Node(rem);
-			if (result == null)
+			if(result == null)
 			{
 				result = temp;
 			}
@@ -103,7 +104,7 @@ public class addtwolist {
 		new_node.next = l2;
 
 		l2 = new_node;
-}
+	}
 
 	private static void push(int new_data) {
 		
@@ -114,6 +115,6 @@ public class addtwolist {
 		new_node.next = l1;
 
 		l1 = new_node;
-}
+	}
 	
 }

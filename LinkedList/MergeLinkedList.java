@@ -78,9 +78,9 @@ public class MergeLinkedList {
 		System.out.println("First Linked List:");
 		llist1.printList();
 
-		llist2.push(8);
-		llist2.push(7);
-		llist2.push(6);
+//		llist2.push(8);
+//		llist2.push(7);
+//		llist2.push(6);
 		llist2.push(5);
 		llist2.push(4);
 

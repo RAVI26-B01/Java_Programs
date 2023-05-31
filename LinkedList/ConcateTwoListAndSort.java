@@ -11,14 +11,13 @@ public class ConcateTwoListAndSort {
 
     static void printList(node head) {
         node tmp;
-
         tmp = head;
-
+        
         while (tmp.next != null) {
             System.out.print(tmp.data + " -> ");
             tmp = tmp.next;
         }
-        System.out.println(tmp.data );
+        System.out.println( tmp.data );
     }
 
     static node AddNode(node head, int num) {
@@ -56,7 +55,7 @@ public class ConcateTwoListAndSort {
 
     // This function will concatenate
     // the two linked list
-    //1 -> 6 -> 10 -> 5 -> 3 -> 9
+    // 1 -> 6 -> 10 -> 5 -> 3 -> 9
     static node concatenateList() {
         node tail = head1;
 

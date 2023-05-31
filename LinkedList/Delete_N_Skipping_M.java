@@ -27,7 +27,7 @@ public class Delete_N_Skipping_M {
             head = new Node(keys[i], head);
         }
         printList(head);
-        deleteNodes(head, 1, 3);
+        deleteNodes(head, 2, 3);
         printList(head);
 	}
 	
