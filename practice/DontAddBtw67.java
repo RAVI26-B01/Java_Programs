@@ -9,6 +9,9 @@ public class DontAddBtw67 {
 		System.out.println(dontAdd);
 	}
 
+	/*
+	 * Don't add the numbers between 6  &7
+	 */
 	private static int dontAdd(int[] ar) {
 		int sum=0;
 		
