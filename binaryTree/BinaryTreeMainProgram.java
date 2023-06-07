@@ -26,7 +26,8 @@ public class BinaryTreeMainProgram {
 			System.out.println("press 6 to Zig_Zag-Order");
 			System.out.println("press 7 to Maximun-Depth");
 			System.out.println("press 8 to Top-View");
-			System.out.println("press 10 to left view Elements");
+			System.out.println("press 9 to left view Elements");
+			System.out.println("press 10 to right view Elements");
 			System.out.println("press 11 to Boundary traversal");
 			System.out.println("press 12 to Deepest Leaves sum");
 			System.out.println("press 13 to Reverse odd levels");
