@@ -1,4 +1,4 @@
-package leetCode;
+package leetcode;
 
 public class WateringPlant_2079 {
 

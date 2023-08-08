@@ -1,4 +1,4 @@
-package leetCode;
+package leetcode;
 
 public class Number_Of_Pair_2023 {
 
