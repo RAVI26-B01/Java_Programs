@@ -7,11 +7,9 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Scanner;
 
+import leetcode.BSTtoGST_1038;
 
-class Node{
-	int data;
-	Node left,right;
-}
+
 public class BinaryTreeMainProgram {
 	static int max_level=0;
 	static Node root ;
@@ -31,6 +29,7 @@ public class BinaryTreeMainProgram {
 			System.out.println("press 11 to Boundary traversal");
 			System.out.println("press 12 to Deepest Leaves sum");
 			System.out.println("press 13 to Reverse odd levels");
+			System.out.println("press 14 to Covert BST to GST");
 			System.out.println();
 			
 			System.out.println("enter your choice");
@@ -49,10 +48,17 @@ public class BinaryTreeMainProgram {
 					case 11:boundaryTraversal(root);break;
 					case 12:deepestLeavesSum(root);break;
 					case 13:reverseOddLevels(root);break;
+					case 14:BSTTOGST(root);break;
 					default :System.out.println("program terminated :-((");System.exit(0);
 				}
 			}
 	}
+
+		private static void BSTTOGST(Node root) {
+			BSTtoGST_1038 bsTtoGST = new BSTtoGST_1038();
+			Node node = bsTtoGST.convertBSTtoGST(root);
+			leverOrderTraversal(node);
+		}
 
 		private static void insert() {
 			Scanner scan=new Scanner(System.in);
@@ -88,7 +94,7 @@ public class BinaryTreeMainProgram {
 			}
 		}
 		
-		private static  void preorderTraversal(Node current) {
+		public static  void preorderTraversal(Node current) {
 			if(current!=null){
 				System.out.print(current.data+" ");
 				preorderTraversal(current.left);
