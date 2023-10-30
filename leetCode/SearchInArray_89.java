@@ -2,7 +2,7 @@ package leetcode;
 
 public class SearchInArray_89 {
 	public static void main(String[] args) {
-		int nums[] = {1,2,2,3,5,6,0,0}, target = 1;
+		int nums[] = {1,2,2,3,3,5,6,0,0}, target = 1;
 		boolean search = search(nums,target);
 		System.out.println(search);
 	}
