@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class SumOfBinary {
 
 	public static void main(String[] args) {
-		String b1="100";
-		String b2="110";
+		String b1="101";
+		String b2="111";
 		String binarySum = BinarySum(b1,b2);
 		System.out.println(binarySum);
 	}

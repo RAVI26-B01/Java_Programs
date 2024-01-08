@@ -19,6 +19,8 @@ public class A3B2C4 {
 				t--;
 			}
 		}
+		
+	
 		return sb.toString();
 		
 	}
