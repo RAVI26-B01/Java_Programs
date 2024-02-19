@@ -50,8 +50,10 @@ public class BinaryTreeMainProgram {
 					case 13:reverseOddLevels(root);break;
 					case 14:BSTTOGST(root);break;
 					default :System.out.println("program terminated :-((");System.exit(0);
+					scan.close();
 				}
 			}
+			
 	}
 
 		private static void BSTTOGST(Node root) {
@@ -64,6 +66,7 @@ public class BinaryTreeMainProgram {
 			Scanner scan=new Scanner(System.in);
 			System.out.print("Enter item to insert :");
 			int item=scan.nextInt();
+			scan.close();
 			Node node=new Node();
 			node.left=null;
 			node.data=item;

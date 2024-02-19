@@ -13,7 +13,6 @@ public class AddOneToArray_66 {
 	private static int[] addOne(int[] ar) {
 		
 		int n = ar.length;
-		int carry=0;
 		for(int i=n-1 ; i>=0 ; i--){
 			if(ar[i]!=9){
 				ar[i]++;
