@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Sorting {
 	 public static void main(String[] args) {
 		
-		 int ar[]={12,2,5,13,6,1,9};
+		 int ar[]={8, 4, 5, 9, 2, 11, 6, 7};
 		 Scanner scan=new Scanner(System.in);
 			while(true) {
 				System.out.println("press 1 to Bubble Sort");
@@ -14,6 +14,7 @@ public class Sorting {
 				System.out.println("press 3 to Insertion Sort");
 				System.out.println("press 4 to Merge Sort");
 				System.out.println("press 5 to Heap Sort");
+				System.out.println("press 6 to Quick Sort");
 				System.out.println("enter your choice");
 				int choice=scan.nextInt();
 				switch(choice) {
@@ -22,12 +23,50 @@ public class Sorting {
 				case 3:insertion_sort(ar);break;
 				case 4:merge_sort(ar);break;
 				case 5:heap_sort(ar);break;
-				default :System.out.println("program terminated :-((");System.exit(0);
+				case 6:quick_sort(ar);break;
+				default :System.out.println("program terminated :-(("); scan.close();System.exit(0);
 				}
+				
 			}
+			
 	}
 
-	 /*
+	 private static void quick_sort(int[] ar) {
+		quickSort(ar, 0 , ar.length-1);
+		System.out.println(Arrays.toString(ar));
+	}
+
+	private static void quickSort(int[] ar, int low, int hi) {
+		if(low>hi)
+			return;
+		int start = low;
+		int end = hi;
+		int mid = low + (hi-low)/2;
+		int pivot = ar[mid];
+		while(start<=end){
+
+			while(ar[start]< pivot)
+			{
+				start++;
+			}
+			while(ar[end]> pivot)
+			{
+				end--;
+			}
+			if(start<=end){
+				int temp = ar[start];
+				ar[start]= ar[end];
+				ar[end] = temp;
+				start++;
+				end--;
+			}
+			
+		}
+		quickSort(ar, low, end);
+		quickSort(ar, start, hi);
+	}
+
+	/*
 	  * Heap sort starts
 	  */
 	 private static void heap_sort(int[] ar) {
