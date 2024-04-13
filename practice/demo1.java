@@ -6,17 +6,35 @@ public class demo1 {
 	
 	public static void main(String[] args) {
 
-        Scanner scan = new Scanner(System.in);
-        int n1 = scan.nextInt();
-        int n2 = scan.nextInt();
-        String s1 = scan.nextLine();
-        String s2 = scan.nextLine();
-        System.out.println("n1 :"+ n1);
-        System.out.println("n2 :"+ n2);
-        System.out.println("s1 :"+ s1);
-        System.out.println("s2 :"+ s2);
-	    scan.close();
+        int[] ar = {3,2,2,1,1,2,1,2,2,2,1,1,2};
+      int x =  majorityElement(ar);
+      System.out.println(x);
 	}
+
+    public static int majorityElement(int[] nums) {
+      
+        int el=-1;
+         int count=0;
+         for(int num:nums){
+            if(count==0){
+                el=num;count=1;
+            }
+            else if(num==el){
+                count++;
+            }
+            else {count--;}
+         }
+     
+        count=0;
+         for(int i=0;i<nums.length;i++){
+             if(nums[i]==el){
+                 count++;
+             }
+         }
+         if(count>(nums.length/2))
+             return el;
+         return -1;
+     }
 
 	
 	public static void drawPatternB(int h, int w){  

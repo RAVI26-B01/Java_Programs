@@ -1,6 +1,6 @@
 package leetcode;
 
-public class StepsToArrayDecrease{
+public class StepsToArrayDecrease_2289{
 
   
     public static void main(String[] args) {
