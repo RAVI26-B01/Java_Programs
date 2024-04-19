@@ -6,9 +6,10 @@ public class demo1 {
 	
 	public static void main(String[] args) {
 
-        int[] ar = {3,2,2,1,1,2,1,2,2,2,1,1,2};
-      int x =  majorityElement(ar);
-      System.out.println(x);
+        String s1= new String ("Durga");
+        String s2 = s1.concat("software");
+        String s3= s2.intern();
+        System.out.println(s2==s3);
 	}
 
     public static int majorityElement(int[] nums) {
