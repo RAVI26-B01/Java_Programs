@@ -13,6 +13,7 @@ public class SubSequence {
         recursiveUniqueSubSet(ar);
     }
 
+    @SuppressWarnings("unused")
     private static void recursiveSubSet(int[] ar) {
         List<List<Integer>> outer = new ArrayList<>();
         outer.add(new ArrayList<>());

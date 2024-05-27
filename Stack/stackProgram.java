@@ -19,7 +19,9 @@ public class stackProgram {
 		case 3:s.display();break;
 		default:System.out.println("program ended :-(((");System.exit(0);
 		}
+		scan.close();
 		}
+		
 	}
 }
 

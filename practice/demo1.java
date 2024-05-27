@@ -5,37 +5,17 @@ import java.util.Scanner;
 public class demo1 {
 	
 	public static void main(String[] args) {
-
-        String s1= new String ("Durga");
-        String s2 = s1.concat("software");
-        String s3= s2.intern();
-        System.out.println(s2==s3);
+        
+        int n = -37;
+        int x =-3;
+        // System.out.println(n>>>2);
+        // System.out.println(Integer.toBinaryString(-12));
+        // System.out.println(Integer.toBinaryString(-12>>2));;
+        int i =n>>>x;
+        System.out.println(i);
+        // System.out.println(Integer.toBinaryString(1073741821));
+       
 	}
-
-    public static int majorityElement(int[] nums) {
-      
-        int el=-1;
-         int count=0;
-         for(int num:nums){
-            if(count==0){
-                el=num;count=1;
-            }
-            else if(num==el){
-                count++;
-            }
-            else {count--;}
-         }
-     
-        count=0;
-         for(int i=0;i<nums.length;i++){
-             if(nums[i]==el){
-                 count++;
-             }
-         }
-         if(count>(nums.length/2))
-             return el;
-         return -1;
-     }
 
 	
 	public static void drawPatternB(int h, int w){  
