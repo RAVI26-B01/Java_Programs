@@ -7,7 +7,7 @@ public class LenOfMaxDisctictElement {
 
 	public static void main(String[] args) {
 
-		String s = "school";
+		String s = "dvdf";
 		int findDisctLen = findDisctLen(s);
 		System.out.println(findDisctLen);
 	}
@@ -16,7 +16,7 @@ public class LenOfMaxDisctictElement {
 		int count = 0 ;
 		int tempCount = 0;
 		List<Character> al = new ArrayList<>();
-		for(int i = 0 ; i < s.length() ; i++) {
+		for(int i = s.length()-1 ; i >=0 ; i--) {
 			if(!al.contains(s.charAt(i))) {
 				al.add(s.charAt(i));
 				tempCount++;

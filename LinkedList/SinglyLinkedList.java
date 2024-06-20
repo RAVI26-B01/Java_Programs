@@ -19,6 +19,7 @@ public class SinglyLinkedList {
 			System.out.println("Press 10 to find middle element in single pass");
 			System.out.println("Press 11 Move last element to first");
 			System.out.println("Press 12 to check Palindrome or not");
+			System.out.println("Press 13 to Sort");
 			
 			int key=scan.nextInt();  
 			switch (key) {
@@ -34,6 +35,7 @@ public class SinglyLinkedList {
 			case 10:FindMiddleNodeInSinglePass();break;
 			case 11:MoveLastElementToFirst();break;
 			case 12:CheckPalindrome();break;
+			case 13:Sort();break;
 			
 			default:System.exit(0);
 				break;
@@ -366,5 +368,22 @@ private static Node reverse_a_Node(Node list) {
 	return temp;
 }
 
+
+private static void Sort() {
+	Node temp1 = head;
+	
+	while(temp1.next!=null) {
+		Node temp2 = head;
+		while(temp2.next !=null) {
+			if(temp2.data >temp2.next.data) {
+				int t = temp2.data;
+				temp2.data = temp2.next.data;
+				temp2.next.data = t;
+			}
+			temp2= temp2.next;
+		}
+		temp1=temp1.next;
+	}
+}
 
 }
