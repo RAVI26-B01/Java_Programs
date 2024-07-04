@@ -12,14 +12,14 @@ public class BuySellStock_121 {
 	public static int maxProfit(int[] ar) {
 		int n = ar.length;
 		int maxProfit = 0;
-		int chepestPrice = ar[0];
+		int buyPrice  = ar[0];
 		for(int i = 1 ; i< n ; i++) {
-			if(ar[i]<chepestPrice) {
-				chepestPrice = ar[i];
+			if(ar[i]<buyPrice ) {
+				buyPrice  = ar[i];
 			}
-			if((ar[i] - chepestPrice )>maxProfit)
+			if((ar[i] - buyPrice  )>maxProfit)
 			{
-				maxProfit = ar[i] -chepestPrice ;
+				maxProfit = ar[i] - buyPrice  ;
 			}
 		}
 		
