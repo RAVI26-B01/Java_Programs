@@ -16,7 +16,7 @@ public class BinaryTreeMainProgram {
 	public static void main(String[] args) {
 		Scanner scan=new Scanner(System.in);
 		while(true) {
-			System.out.println("press 1 to InsertFront");
+			System.out.println("press 1 to Insert");
 			System.out.println("press 2 to Pre-Order");
 			System.out.println("press 3 to In-Order");
 			System.out.println("press 4 to Post-Order");

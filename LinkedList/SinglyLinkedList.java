@@ -20,6 +20,7 @@ public class SinglyLinkedList {
 			System.out.println("Press 11 Move last element to first");
 			System.out.println("Press 12 to check Palindrome or not");
 			System.out.println("Press 13 to Sort");
+			System.out.println("Press 14 to check Circularity");
 			
 			int key=scan.nextInt();  
 			switch (key) {
@@ -36,6 +37,7 @@ public class SinglyLinkedList {
 			case 11:MoveLastElementToFirst();break;
 			case 12:CheckPalindrome();break;
 			case 13:Sort();break;
+			case 14:check_circular();break;
 			
 			default:System.exit(0);
 				break;
@@ -383,6 +385,30 @@ private static void Sort() {
 			temp2= temp2.next;
 		}
 		temp1=temp1.next;
+	}
+}
+
+public static void check_circular() {
+	Node slow,fast;
+	if(head==null){
+		System.err.println("No element found");
+	}
+	else if(head.next==head){
+		System.out.println("Circular");
+	}else{
+		 slow=head;
+		 fast=head;
+		 while(fast!=null && fast.next!=null){
+			 slow=slow.next;
+			 fast=fast.next.next;
+			 if(fast == slow){
+				 System.out.println("circular");
+				 System.exit(0);
+			 }
+		 }
+		 System.out.println("Not-circular");
+		 
+		 
 	}
 }
 

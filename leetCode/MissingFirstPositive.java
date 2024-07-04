@@ -3,7 +3,7 @@ package leetcode;
 public class MissingFirstPositive {
 
 	public static void main(String[] args) {
-		int[] ar={6,-1,-3,1,2};
+		int[] ar={0,1,2};
 		int findMissing = findMissing(ar);
 		System.out.println(findMissing);
 	}

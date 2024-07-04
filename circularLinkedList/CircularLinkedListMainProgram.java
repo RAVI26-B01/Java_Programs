@@ -97,7 +97,7 @@ class CircularLinkedList{
 		}else{
 			 slow=head;
 			 fast=head;
-			 while(slow!=null && head!=null){
+			 while(slow!=null && fast!=null){
 				 slow=slow.next;
 				 fast=fast.next.next;
 				 if(fast == slow){
