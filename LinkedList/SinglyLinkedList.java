@@ -21,6 +21,7 @@ public class SinglyLinkedList {
 			System.out.println("Press 12 to check Palindrome or not");
 			System.out.println("Press 13 to Sort");
 			System.out.println("Press 14 to check Circularity");
+			System.out.println("Press 15 to rotate k times");
 			
 			int key=scan.nextInt();  
 			switch (key) {
@@ -38,11 +39,36 @@ public class SinglyLinkedList {
 			case 12:CheckPalindrome();break;
 			case 13:Sort();break;
 			case 14:check_circular();break;
+			case 15:rotate_k_times();break;
 			
 			default:System.exit(0);
 				break;
 			} 
 		}
+	}
+
+	private static void rotate_k_times() {
+		Scanner scan = new Scanner(System.in);
+		Node last = head;
+		Node before = head;
+		Node temp = head;
+		System.out.println("enter k : ");
+		int k = scan.nextInt();
+		int count =1;
+		while(last.next!=null){
+			count++;
+			last=last.next;
+		}
+		
+		 last.next = head;
+		head = last;
+		int ans = count - k%count;
+		while(ans>1) {
+			before = before.next;
+			ans--;
+		}
+		head = before.next;
+		before.next=null;
 	}
 
 	private static void MoveLastElementToFirst() {
