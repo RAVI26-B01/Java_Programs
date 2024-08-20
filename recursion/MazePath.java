@@ -3,14 +3,14 @@ package recursion;
 
 public class MazePath {
     public static void main(String[] args) {
-        // int count = pathCount(3, 3);
-        // System.out.println(count);
+//         int count = pathCount(4, 4);
+//         System.out.println(count);
         // pathPrint("", 3, 3);
-        // pathDiagonalPrint("", 3, 3);
+//         pathDiagonalPrint("", 3, 3);
 
         boolean[][] maze={
             {true,true,true},
-            {true,false,true},
+            {false,true,true},
             {true,true,true}
         };
         pathRestriction("",maze, 0, 0);
@@ -46,11 +46,11 @@ public class MazePath {
             return;
         }
         if(r>1 && c>1)
-        pathDiagonalPrint(path+"D",r-1, c-1);
+        	pathDiagonalPrint(path+"D",r-1, c-1);
         if(r>1)
-        pathDiagonalPrint(path+"V",r-1, c);
+        	pathDiagonalPrint(path+"V",r-1, c);
         if(c>1)
-        pathDiagonalPrint(path+"H",r, c-1);
+        	pathDiagonalPrint(path+"H",r, c-1);
     }
 
     private static void pathRestriction(String path, boolean[][] maze, int r, int c) {
@@ -64,8 +64,8 @@ public class MazePath {
         }
 
         if(r  < maze.length-1)
-        pathRestriction(path+"D", maze, r+1, c);
+        	pathRestriction(path+"D", maze, r+1, c);
         if(c < maze[0].length-1)
-        pathRestriction(path+"R", maze, r, c+1);
+        	pathRestriction(path+"R", maze, r, c+1);
     }
 }

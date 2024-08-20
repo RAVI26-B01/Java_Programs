@@ -7,12 +7,12 @@ public class MazeAllPath {
         boolean[][] maze={
             {true,true,true},
             {true,true,true},
-            {true,true,true}
+            {true,false,true}
         };
-        // allPath("",maze, 0, 0);
+         allPath("",maze, 0, 0);
         int[][] pathArr = new int[maze.length][maze[0].length];
         int count =0;
-        printPathTraverse("",maze, 0, 0, pathArr, count);
+//        printPathTraverse("",maze, 0, 0, pathArr, count);
         
     }
 
@@ -35,7 +35,7 @@ public class MazeAllPath {
           allPath(path+"U", maze, r-1 , c);
         if(c > 0)
              allPath(path+"L", maze, r , c-1);
-             maze[r][c]=true;
+        maze[r][c]=true;
     }
 
 

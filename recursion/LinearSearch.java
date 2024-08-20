@@ -26,7 +26,7 @@ public class LinearSearch {
 
     static boolean search(int[] ar, int target, int index){
 
-        if(ar[index] == ar.length - 1)
+        if(index == ar.length - 1)
             return false;
         
         return ar[index] == target || search(ar, target, index+1);

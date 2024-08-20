@@ -22,7 +22,7 @@ public class ReverseDigits {
     }
 
     static int reverse2(int n){
-        int digits = (int)(Math.log10(n))+1; // retrun numbers of digits in a number
+        int digits = (int)(Math.log10(n))+1; // return numbers of digits in a number
         return helper(n,digits);
     }
 

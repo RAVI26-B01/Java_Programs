@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class FloodFill_733 {
     public static void main(String[] args) {
-        int[][] image={{0,0,0},{0,0,0}};
-        int sr = 1,sc=0,color=2;
+        int[][] image={{1,1,1},{1,1,0},{1,0,1}};
+        int sr = 1,sc=1,color=2;
         floodFill(image,sr,sc,color);
         for(int[] i : image){
             System.out.println(Arrays.toString(i));

@@ -96,7 +96,7 @@ public class JavaStreams {
 
 		String s="raghureddy";
 
-		char[] c=s.toCharArray();
+//		char[] c=s.toCharArray();
 
 		System.out.println(s.chars().mapToObj(e -> (char)e).collect(Collectors.groupingBy(t -> t,Collectors.counting())));;
 

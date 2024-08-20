@@ -5,11 +5,11 @@ import java.util.List;
 
 public class SubSequence {
     public static void main(String[] args) {
-        // String s = "abc";
-        // printSubSeq("",s);
+         String s = "abc";
+//         printSubSeq("",s);
         // System.out.println(returnSubSeq("",s));
-        int[] ar = {1, 2, 2};
-        // recursiveSubSet(ar);
+        int[] ar = {1, 2, 2,3};
+//         recursiveSubSet(ar);
         recursiveUniqueSubSet(ar);
     }
 

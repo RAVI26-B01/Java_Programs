@@ -1,5 +1,7 @@
 package leetcode;
-
+/*
+ * kadane's algorithm
+ */
 public class MaxSubarray_53 {
 
 	public static void main(String[] args) {

@@ -1,26 +1,41 @@
 package practice;
 
-public class example1 {
-	public static void main(String[] args) {
-		int[] ar = {3, 5, 6,1, 9,9,6,1}; //6
-		int fl = Integer.MIN_VALUE ;
-		int sl = Integer.MIN_VALUE;
-		for(int i = 0 ; i<ar.length ; i++) {
-			if(fl<ar[i]) {
-				sl=fl;
-				fl=ar[i];
-			}
-			else if(sl<ar[i] &&ar[i]!=fl ) {
-				sl=ar[i];
-			}
-		}
-		System.out.println(sl);
-	}
+import java.util.HashMap;
+
+class example1 {
+    public static int lenOfLongSubarr(int[] A, int N, int K)
+    {
+        HashMap<Integer, Integer> sum_index_map
+            = new HashMap<>();
+        int maxLen = 0;
+        int prefix_sum = 0;
+
+        for (int i = 0; i < N; i++) {
+            prefix_sum += A[i];
+            if (prefix_sum == K) {
+                maxLen = i + 1;
+            }
+
+            else if (sum_index_map.containsKey(prefix_sum - K)) {
+                maxLen = Math.max(
+                    maxLen,
+                    i - sum_index_map.get(prefix_sum - K));
+            }
+
+            if (!sum_index_map.containsKey(prefix_sum)) {
+                sum_index_map.put(prefix_sum, i);
+            }
+        }
+
+        return maxLen;
+    }
+
+    public static void main(String[] args)
+    {
+        int[] arr = { 10, 5, 2, 7, 1, 9 };
+        int n = arr.length;
+        int k = 15;
+        System.out.println("Length = "
+                           + lenOfLongSubarr(arr, n, k));
+    }
 }
-
-  
-  
-  
-  
-
-

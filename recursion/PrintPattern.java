@@ -10,15 +10,18 @@ public class PrintPattern {
         if(r==0){
             return;
         }
-        if(c<r){
-            System.out.print("*");
-            print(r, c+1);
-            
+        if(c<r){ 
+        	 print(r, c+1);
+        	System.out.print("*");
+           
         }
-        else{
-            System.out.println();
-            print(r-1, 0);
+        else{ 
+        	print(r-1, 0);
+        	System.out.println();
+            
+           
             
         }
     }
+    
 }

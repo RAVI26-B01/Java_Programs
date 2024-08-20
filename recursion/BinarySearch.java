@@ -4,7 +4,7 @@ public class BinarySearch {
     public static void main(String[] args) {
         
         int[] ar = {1, 3, 5, 8, 12, 16};
-        int target = 1;
+        int target = 12;
 
         boolean res= search(ar, target);
         System.out.println(res);
