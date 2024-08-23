@@ -5,7 +5,7 @@ package leetcode;
 public class MaxSubarray_53 {
 
 	public static void main(String[] args) {
-		int[] ar = {-2, -1, -5, -2, -3};
+		int[] ar = {-2,1,-3,4,-1,2,1,-5,4};
 		int maxSubArray = maxSubArray(ar);
 		System.out.println(maxSubArray);
 		
