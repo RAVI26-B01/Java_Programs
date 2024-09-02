@@ -60,8 +60,7 @@ public class SinglyLinkedList {
 			last=last.next;
 		}
 		
-		 last.next = head;
-		head = last;
+		last.next = head;
 		int ans = count - k%count;
 		while(ans>1) {
 			before = before.next;

@@ -1,38 +1,30 @@
 package practice;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
-import com.sun.xml.internal.bind.v2.model.util.ArrayInfoUtil;
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
-
-import jdk.nashorn.internal.ir.LiteralNode.ArrayLiteralNode;
 
  public class Demo3 {
 
 	public static void main(String[] args) {
-		c b = new b();
-		b.my();
+		int n =152;
+		
+		while(n%2==0)
+		{
+			n=n/2;
+			System.out.print(2+" ");
+		}
+		
+		for(int i = 3 ; i<Math.sqrt(n) ; i+=2) {
+			while(n%i==0)
+			{
+				n=n/i;
+				System.out.print(i+" ");
+			}
+		}
+		
+		if(n>2)
+			System.out.print(n);
 	}
 
 }
- 
- interface a{
-	 default void my() {
-		 System.out.println("aaa");
-	 }
- }
- 
- interface c{
-	 default void my() {
-		 System.out.println("bbb");
-	 }
- }
- 
- class b implements a,c{
-	 public void my() {
-//		 System.out.println("ccc");
-		 a.super.my();
-	 }
- }
 

@@ -97,12 +97,12 @@ class CircularLinkedList{
 		}else{
 			 slow=head;
 			 fast=head;
-			 while(slow!=null && fast!=null){
+			 while(fast!=null && fast.next!=null){
 				 slow=slow.next;
 				 fast=fast.next.next;
 				 if(fast == slow){
 					 System.out.println("circular");
-					 System.exit(0);
+					return;
 				 }
 			 }
 			 System.out.println("Not-circular");
