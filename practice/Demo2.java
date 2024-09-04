@@ -29,6 +29,7 @@ public class Demo2 {
 				case 4:leftView();break;
 				case 5:topView();break;
 				case 6:boundry();break;
+				case 7:pathSum();break;
 				default:break;
 			}
 		}
@@ -36,6 +37,28 @@ public class Demo2 {
 	
 	
 	
+	private static void pathSum() {
+		Node temp = root;
+		boolean hasPathSum = hasPathSum(temp, 25);
+		System.out.println(hasPathSum);
+		
+	}
+	
+	public static boolean hasPathSum(Node root, int targetSum) {
+        if(root == null)
+            return false;
+       
+    	targetSum = targetSum - root.data;
+        if( 0 == targetSum)
+            return true;
+       
+        boolean hasPathSum = hasPathSum(root.left, targetSum);
+        boolean hasPathSum2 = hasPathSum(root.right, targetSum);
+		return hasPathSum || hasPathSum2;
+    }
+
+
+
 	private static void boundry() {
 		ArrayList<Integer> ans = new ArrayList<>();
 		if(!isLeaf(root))

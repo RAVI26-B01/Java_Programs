@@ -18,7 +18,6 @@ public class SubstringwithAtmostKChars {
 	        HashSet<Character>set = new HashSet<>();
 	        for(int j=i;j<n;j++){
 	            set.add(str.charAt(j));
-	            //System.out.print(set+" ");
 	            if(set.size()<=k){
 	                int length =j-i+1;
 	                maxLength =Math.max(maxLength,length);

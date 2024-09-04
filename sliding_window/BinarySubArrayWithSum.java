@@ -1,9 +1,11 @@
 package sliding_window;
 
+
+// lletcode 930
 public class BinarySubArrayWithSum {
 
 	public static void main(String[] args) {
-		int[] nums = {1, 0, 0, 1, 0, 1};
+		int[] nums = {1, 0, 0, 1, 0, 1,0};
 		int goal = 2;
 		int count = numSubarraysWithSum(nums, goal);
 		System.out.println(count);
@@ -15,8 +17,10 @@ public class BinarySubArrayWithSum {
 	 */
 	public static int numSubarraysWithSum(int[] nums, int goal) {
 		// [ <= goal - <=goal-1 ] == goal
-        int ans = countSubArray(nums,goal) - countSubArray(nums, goal -1);
-        return ans;
+        int ans1 = countSubArray(nums,goal); 
+        int ans2 = countSubArray(nums, goal -1);
+        System.out.println(ans1+ " "+ ans2);
+        return ans1- ans2;
     }
 	
 	/*

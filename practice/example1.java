@@ -1,7 +1,5 @@
 package practice;
 
-import java.util.Arrays;
-
 class ll{
 	ll next;
 	int data;
@@ -13,20 +11,16 @@ class ll{
 public class example1 {
 	static ll head = null;
     public static void main(String[] args) {
-    	StringBuffer sb = new StringBuffer();
-    	sb.append("aasdasdads");
-    	sb.ensureCapacity(1005);
-    	System.out.println(sb.capacity());
-//    	int[] ar = {10, 20,10,40,40};
-//    	for(int i = 0 ; i<ar.length ; i++) {]
-//    		head = new ll(head,ar[i]);
-//    	}
-//    	
-//    	display();
-//    	removeDuplicates();
-//    	display();
-//    	moveLastToFirst();
-//    	display();
+    	int[] ar = {10, 20,10,40,40};
+    	for(int i = 0 ; i<ar.length ; i++) {
+    		head = new ll(head,ar[i]);
+    	}
+    	
+    	display();
+    	removeDuplicates();
+    	display();
+    	moveLastToFirst();
+    	display();
     }
     
 	private static void moveLastToFirst() {

@@ -8,8 +8,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.OptionalDouble;
 import java.util.Set;
-import java.util.TreeMap;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
  
 public class JavaStreams {
  
@@ -131,6 +131,19 @@ public class JavaStreams {
 	
 		Map<Object, Long> collect6 = s.chars().mapToObj(x->(char)x).collect(Collectors.groupingBy(x->x, Collectors.counting()));
 		System.out.println(collect6);
+		
+		
+		Stream.iterate(1, i->i+1).limit(15).forEach(System.out::print);
+		System.out.println();
+		int sum2 = Stream.iterate(1, i->i+1).limit(15).mapToInt(Integer::intValue).sum();
+		System.out.println(sum2);
+		
+		int sum3 = Stream.iterate(1, i->i+1).limit(15).reduce(0, (i,j)->i+j);
+		System.out.println(sum3);
+		
+		
+		String[] strlist= {"a","b","c"};
+		Arrays.stream(strlist).map(x-> x+"z").forEach(System.out::print);
 	}
  
 }

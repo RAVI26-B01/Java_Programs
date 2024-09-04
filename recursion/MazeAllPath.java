@@ -9,10 +9,10 @@ public class MazeAllPath {
             {true,true,true},
             {true,false,true}
         };
-         allPath("",maze, 0, 0);
+//         allPath("",maze, 0, 0);
         int[][] pathArr = new int[maze.length][maze[0].length];
         int count =0;
-//        printPathTraverse("",maze, 0, 0, pathArr, count);
+        printPathTraverse("",maze, 0, 0, pathArr, count);
         
     }
 

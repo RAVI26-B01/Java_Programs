@@ -8,6 +8,7 @@ import java.util.Queue;
 import java.util.Scanner;
 
 import leetcode.BSTtoGST_1038;
+import leetcode.PathSum_112;
 
 
 public class BinaryTreeMainProgram {
@@ -30,6 +31,7 @@ public class BinaryTreeMainProgram {
 			System.out.println("press 12 to Deepest Leaves sum");
 			System.out.println("press 13 to Reverse odd levels");
 			System.out.println("press 14 to Covert BST to GST");
+			System.out.println("press 15 to Check Path-Sum");
 			System.out.println();
 			
 			System.out.println("enter your choice");
@@ -49,6 +51,7 @@ public class BinaryTreeMainProgram {
 					case 12:deepestLeavesSum(root);break;
 					case 13:reverseOddLevels(root);break;
 					case 14:BSTTOGST(root);break;
+					case 15:checkPathSum(root);break;
 					default :System.out.println("program terminated :-((");System.exit(0);
 					
 				}
@@ -220,6 +223,15 @@ public class BinaryTreeMainProgram {
 		private static void reverseOddLevels(Node root2) {
 			ReverseOddLevels oddLevels = new ReverseOddLevels();
 			oddLevels.reverseOddLevels(root2);
+		}
+		
+		private static void checkPathSum(Node root2) {
+			Scanner scan=new Scanner(System.in);
+			System.out.print("Enter Sum Value :");
+			int sum=scan.nextInt();
+			PathSum_112 pathSum = new PathSum_112();
+			boolean hasPathSum = pathSum.hasPathSum(root2, sum);
+			System.out.println(hasPathSum);
 		}
 }
 
