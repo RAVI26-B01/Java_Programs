@@ -33,17 +33,21 @@ public class SubstringAll3Chars {
       int l=0, count=0, ans=0;
       for(int r=0;r<ch.length;r++)
       {
-          if(arr[ch[r]-'a']++==0)
+          if(arr[ch[r]-'a']==0)
           {
               count++;
           }
+          arr[ch[r]-'a']++;
           while(count==3)
           {
               ans=ans+ch.length-r;
-              if(arr[ch[l++]-'a']--==1)
+              if(arr[ch[l]-'a']==1)
               {
                   count--;
               }
+             
+              arr[ch[l]-'a']--;
+              l++;
           }
       }
       return ans;

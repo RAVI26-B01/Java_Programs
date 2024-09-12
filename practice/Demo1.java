@@ -31,9 +31,32 @@ public class Demo1 {
 			case 4:delete_rear();break;
 			case 5:display();break;
 			case 6 :sort();break;
+			case 7 :swap_pair();break;
 			default :System.out.println("program terminated :-((");System.exit(0);
 			}
 		}
+	}
+
+	private static void swap_pair() {
+		lNode f = head;
+		lNode s = head.next;
+		lNode t = head.next.next;
+		lNode temp = null;
+		int count = 0;
+		while(s != null) {
+			temp =s; 
+			s.next = f;
+			f.next = t;
+			if(count == 0)
+				head = s;
+			count++;
+			temp = f;
+			f= f.next;
+			s = f.next;
+			if(s!=null)
+				t= s.next;
+		}
+		
 	}
 
 	private static void sort() {
