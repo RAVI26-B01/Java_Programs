@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 import java.util.OptionalDouble;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
  
 public class JavaStreams {
@@ -19,7 +20,7 @@ public class JavaStreams {
 		
 		List<Integer> collect = list.stream().filter(x->x*x>100).collect(Collectors.toList());
 		
-		System.out.println(collect);
+		System.out.println("filter x*x > 100: " + collect);
 
 		List<String> listString=Arrays.asList("raghu","reddy","loki","raghu","reddy");
 		
@@ -46,9 +47,9 @@ public class JavaStreams {
 
 		Integer minNum1=list.stream().min((a1,a2) -> a1.compareTo(a2)).get();
 
-		System.out.println(minNum1);
+		System.out.println("minNum : "+minNum1);
 
-		System.out.println(minNum);
+		System.out.println("minNum : "+minNum);
 
 		Integer maxNum=list.stream().max(Integer::compareTo).get();
 
@@ -66,7 +67,7 @@ public class JavaStreams {
 
 		List<Integer> printDuplicate=list.stream().filter(x-> !set.add(x)).collect(Collectors.toList());
 
-		System.out.println(printDuplicate);
+		System.out.println("printDuplicate : "+printDuplicate);
 
 		Set<String> setString=new HashSet<>();
 
@@ -81,8 +82,8 @@ public class JavaStreams {
 		System.out.println(findFirst);
 
 		Integer sum=list.stream().mapToInt(Integer::intValue).sum();
-
-		System.out.println(sum);
+		Integer integer = list.stream().reduce((x,y)->x+y).get();
+		System.out.println(sum + " " + integer);
 
 		OptionalDouble average=list.stream().mapToInt(Integer::intValue).average();
 
@@ -107,7 +108,7 @@ public class JavaStreams {
 		String s="raghureddy";
 
 //		char[] c=s.toCharArray();
-
+		
 		System.out.println(s.chars().mapToObj(e -> (char)e).collect(Collectors.groupingBy(t -> t,Collectors.counting())));
 
 		
@@ -118,12 +119,12 @@ public class JavaStreams {
 		l.add(new abc(4,"klmn",10));
 		
 		Map<Integer, List<abc>> collect5 = l.stream().collect(Collectors.groupingBy(abc::getDept));
-		System.out.println(collect5);
+		System.out.println("collect5: "+collect5);
 		
 		 Map<Integer, Long> collect4 = l.stream().collect(Collectors.groupingBy(abc::getDept,Collectors.counting()));
-		System.out.println(collect4);
+		System.out.println("collect4: "+collect4);
 		Entry<Integer, Long> entry = collect4.entrySet().stream().max(Map.Entry.comparingByValue()).get();
-		System.out.println(entry);
+		System.out.println("entry: "+entry);
 		 
 		Map<Integer, Double> collect2 = l.stream().collect(Collectors.groupingBy(abc::getDept, Collectors.averagingInt(abc::getId)));
 		System.out.println(collect2);
@@ -143,7 +144,8 @@ public class JavaStreams {
 		
 		
 		String[] strlist= {"a","b","c"};
-		Arrays.stream(strlist).map(x-> x+"z").forEach(System.out::print);
+		Arrays.stream(strlist).map(x-> x+"z").forEach(System.out::println);
+		System.out.println();
 	}
  
 }
