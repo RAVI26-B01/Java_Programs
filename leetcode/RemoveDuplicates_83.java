@@ -52,7 +52,7 @@ public class RemoveDuplicates_83 {
         Node ptr = head;
         while (ptr != null)
         {
-            System.out.print(ptr.data + " —> ");
+            System.out.print(ptr.data + " ï¿½> ");
             ptr = ptr.next;
         }
  
