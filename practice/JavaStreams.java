@@ -3,13 +3,13 @@ package practice;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.OptionalDouble;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
  
 public class JavaStreams {
@@ -128,10 +128,9 @@ public class JavaStreams {
 		 
 		Map<Integer, Double> collect2 = l.stream().collect(Collectors.groupingBy(abc::getDept, Collectors.averagingInt(abc::getId)));
 		System.out.println(collect2);
-		
 	
-		Map<Object, Long> collect6 = s.chars().mapToObj(x->(char)x).collect(Collectors.groupingBy(x->x, Collectors.counting()));
-		System.out.println(collect6);
+		Map<Object, Long> collect6 = s.chars().mapToObj(x->(char)x).collect(Collectors.groupingBy(x->x, LinkedHashMap::new, Collectors.counting()));
+		System.out.println("key value pair: "+collect6);
 		
 		
 		Stream.iterate(1, i->i+1).limit(15).forEach(System.out::print);
@@ -146,6 +145,32 @@ public class JavaStreams {
 		String[] strlist= {"a","b","c"};
 		Arrays.stream(strlist).map(x-> x+"z").forEach(System.out::println);
 		System.out.println();
+		
+		
+		List<Integer> i= Arrays.asList(1, 2, 3 ,4, 3, 1);
+		List<List<Integer>> ll = new ArrayList<>();
+		ll.add(i);
+		Stream<Integer> flatMap = ll.stream().flatMap(x->x.stream()); // flatMap return stream<Integer>
+		int flatMapSum = flatMap.mapToInt(x->x).sum();	//maptoInt() converts to IntStream so we can apply sum()
+		System.out.println("flatmap sum :" + flatMapSum);
+		
+		/*
+		 * Note
+		 *  flatMap on 2d arrays
+		 *  flatMapToInt we have to use for primitive array
+		 *  Arrays::stream
+		 */
+		int[][] ar = {{1, 2, 3} ,{4, 3, 1}};
+		int flatSum = Stream.of(ar).flatMapToInt(Arrays::stream).sum();
+		System.out.println(flatSum);
+		 Stream<Integer> boxedArray = Stream.of(ar).flatMapToInt(Arrays::stream).boxed();
+		 System.out.println(boxedArray);
+		 
+		 // count character in a string
+		 String str = "malayalam";
+		 char c = 'a';
+		 int sum4 = (int) str.chars().filter(x->x==c).count();
+		 System.out.println("Character count = " + sum4);
 	}
  
 }

@@ -1,5 +1,6 @@
 package sliding_window;
 
+// leetcode 904
 public class FruitIntoBasket {
 
 	public static void main(String[] args) {
@@ -17,9 +18,9 @@ public class FruitIntoBasket {
         int ans = 0;
 
         while (r < fruits.length) {
-            if (f == -1 || fruits[r] == fruits[f]) {
+            if (f == -1 || fruits[r] == fruits[f]) { // no fruit or  first same fruit
                 f = r;
-            } else if (s == -1 || fruits[r] == fruits[s]) {
+            } else if (s == -1 || fruits[r] == fruits[s]) { // no fruit or  second same fruit
                 s = r;
             } else {
                 // When a new fruit type is encountered

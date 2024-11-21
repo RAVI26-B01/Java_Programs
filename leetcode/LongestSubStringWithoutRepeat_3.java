@@ -1,9 +1,9 @@
-package sliding_window;
+package leetcode;
 
 import java.util.HashMap;
 
 // leetcode 3
-public class LongestSubStringWithoutRepeat {
+public class LongestSubStringWithoutRepeat_3 {
 
 	public static void main(String[] args) {
 		String s = "abcabcbb";

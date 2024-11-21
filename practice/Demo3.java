@@ -1,48 +1,135 @@
 package practice;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-class userDO{
-	String name;
-	String dept;
-	public userDO(String name, String dept) {
-		super();
-		this.name = name;
-		this.dept = dept;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getDept() {
-		return dept;
-	}
-	public void setDept(String dept) {
-		this.dept = dept;
-	}
-	
-	
-	
-}
 public class Demo3 {
 	public static void main(String[] args) {
-		
-		List<userDO> userList = new ArrayList<>();
-		userList.add(new userDO("ravi","marketing"));
-		userList.add(new userDO("ravi","devops"));
-		userList.add(new userDO("kumar","test"));
-		Map<String, List<userDO>> collect = userList.stream().collect(Collectors.groupingBy(userDO::getName));
-		System.out.println(collect);
-		
-		int[] ar = {1, 2, 3 ,4, 3, 1};
-		Map<Integer, Long> collect2 = Arrays.stream(ar).mapToObj(x->x).collect(Collectors.groupingBy(x->x,Collectors.counting()));
-		System.out.println(collect2);
+		int[] ar = {3, 4, 5, 3, 4, 6};
+		find2Unique(ar);
 	}
+
+	private static void find2Unique(int[] ar) {
+		int diff =0;
+		int[] ans = new int[2];
+		for(int i = 0 ; i<ar.length ; i++) {
+			diff^=ar[i];
+		}
+		 String l= Integer.toBinaryString(-diff);
+		diff &= -diff;
+		
+		for(int i = 0 ; i<ar.length ; i++) {
+			if((ar[i] & diff)==0) {
+				ans[0]^=ar[i];
+			}else {
+				ans[1]^=ar[i];
+			}
+				
+		}
+		System.out.println(Arrays.toString(ans));
+		
+	}
+
+	private static void moveZeroToLeft(int[] nums) {
+		int j = nums.length-1 ;
+		for(int i = nums.length-1 ; i>=0 ; i--) {
+			
+			if(nums[i]!=0) {
+				//swap;
+				int temp = nums[j];
+				nums[j] = nums[i];
+				nums[i] =temp;
+				j--;
+			}
+		}
+		
+		
+		System.out.println(Arrays.toString(nums));
+		
+	}
+
+	private static void moveZeroToRight(int[] nums) {
+
+		int j =0;
+		for(int i = 0 ; i<nums.length ; i++) {
+			if(nums[i] !=0) {
+				//swap;
+				int temp = nums[j];
+				nums[j] = nums[i];
+				nums[i] =temp;
+				j++;
+			}
+		}
+		
+		System.out.println(Arrays.toString(nums));
+	}
+
+	private static void findReduce(String s, int k) {
+		int ans = 0;
+		int sum =0;
+		
+		for(int i = 0 ; i<s.length() ; i++) {
+			int num = s.charAt(i)-'a'+1;
+			while(num > 0) {
+				int rem = num%10;
+				sum+=rem;
+				num/=10;
+			}
+		}
+		System.out.println(sum);
+		int temp =0;
+		while(--k >0 && sum>9) {
+			temp=0;
+			
+			while(sum>0) {
+				int rem = sum%10;
+				temp+=rem;
+				sum/=10;
+			}
+			sum=temp;
+		}
+		System.out.println(sum);
+	}
+
+	private static void sum(String s1, String s2) {
+		int i = s1.length()-1;
+		int j = s2.length()-1;
+		int sum = 0;
+		int carry =0;
+		int x = 0;
+		int y = 0;
+		StringBuffer ans = new StringBuffer();
+		while(carry > 0 || i>0 || j>0 ) {
+			x = i!=-1?s1.charAt(i)-'0':0;
+			y = j!=-1?s2.charAt(j)-'0':0;
+			sum = x+y+carry;
+			carry = sum/10;
+			ans.append(sum%10);
+			
+			i--;j--;
+		}
+		
+		System.out.println(ans.reverse());
+	}
+
+	private static void printPermutation(String p, String s) {
+
+		if(s.isEmpty()) {
+			System.out.println(p);
+			return;
+		}
+		
+		 char ch = s.charAt(0);
+		for(int i =0 ; i <=p.length() ; i++) {
+			String f = p.substring(0,i);
+			String l = p.substring(i,p.length());
+			printPermutation(f+ch+l, s.substring(1));
+		}
+		
+		
+		
+	}
+
 
 }
