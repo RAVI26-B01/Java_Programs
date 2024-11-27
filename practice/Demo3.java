@@ -4,10 +4,69 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+
+class a{
+	private void m1() {
+		System.out.println("a method");
+	}
+}
+
+class b extends a{
+	 void m1() {
+		System.out.println("b method");
+	}
+}
 public class Demo3 {
 	public static void main(String[] args) {
-		int[] ar = {3, 4, 5, 3, 4, 6};
-		find2Unique(ar);
+//		int[] ar = {3, 4, 5, 3, 4, 6};
+//		quickSort(ar);
+//		System.out.println(ar);
+		
+//		a b = new b();
+//		b.m1();
+	}
+
+	private static void quickSort(int[] ar) {
+		int low = 0 ;
+		int high = ar.length-1;
+		quick_sort(ar,low, high);
+		
+	}
+
+	private static void quick_sort(int[] ar, int low, int high) {
+
+		if(low>high)
+			return;
+		else {
+			int pivot = getPivot(ar, low, high);
+			quick_sort(ar, low, pivot-1);
+			quick_sort(ar, pivot, high);
+		}
+	}
+
+	private static int getPivot(int[] ar, int low, int high) {
+		int pivot = ar[low];
+		int i = low;
+		int j = high;
+		
+		while(i <= j) {
+			while(ar[i]<pivot)
+			{
+				i++;
+			}
+			while(ar[j]>pivot) {
+				j--;
+			}
+			int temp = ar[i];
+			ar[i]=ar[j];
+			ar[j] = temp;
+		}
+		
+		int temp = ar[low];
+		ar[low]=ar[j];
+		ar[j]=temp;
+		
+		return j;
 	}
 
 	private static void find2Unique(int[] ar) {

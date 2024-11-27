@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.OptionalDouble;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
  
@@ -24,53 +25,41 @@ public class JavaStreams {
 
 		List<String> listString=Arrays.asList("raghu","reddy","loki","raghu","reddy");
 		
-		Map<String, Long> collect3 = listString.stream().collect(Collectors.groupingBy(Object::toString, Collectors.counting()));
-		System.out.println(collect3);
+		Map<String, Long> keyPairNames = listString.stream().collect(Collectors.groupingBy(Object::toString, Collectors.counting()));
+		System.out.println("GroupBy Names : "+keyPairNames);
 
 		List<Integer> evenNum=list.stream().filter(x-> x%2==0).collect(Collectors.toList());
-
-		System.out.println(evenNum);
+		System.out.println("Even Numbers : " +evenNum);
 
 		List<String> upperCase=listString.stream().map(String::toUpperCase).collect(Collectors.toList());
-
-		System.out.println(upperCase);
+		System.out.println("UpperCase : "+ upperCase);
 
 		List<String> ascSort=listString.stream().sorted().collect(Collectors.toList());
-
-		System.out.println(ascSort);
+		System.out.println("Asscending Order : "+ascSort);
 
 		List<String> desSort=listString.stream().sorted((a1,a2) -> a2.compareTo(a1)).collect(Collectors.toList());
-
-		System.out.println(desSort);
+		System.out.println("Descending Order : "+desSort);
 
 		Integer minNum=list.stream().min(Integer::compareTo).get();
-
 		Integer minNum1=list.stream().min((a1,a2) -> a1.compareTo(a2)).get();
+		System.out.println("minimun Number : "+minNum1);
+		System.out.println("minimun Number : "+minNum);
 
-		System.out.println("minNum : "+minNum1);
-
-		System.out.println("minNum : "+minNum);
-
+		
 		Integer maxNum=list.stream().max(Integer::compareTo).get();
-
-		System.out.println(maxNum);
+		System.out.println("Max Number : "+maxNum);
 
 		String stringJoin=listString.stream().collect(Collectors.joining(", "));
-
-		System.out.println(stringJoin);
+		System.out.println("Join String by , : "+stringJoin);
 
 		Integer combineAsOne=list.stream().reduce((a,b) -> a+b).get();
-
-		System.out.println(combineAsOne);
+		System.out.println("reduce : "+combineAsOne);
 
 		Set<Integer> set=new HashSet<>();
-
 		List<Integer> printDuplicate=list.stream().filter(x-> !set.add(x)).collect(Collectors.toList());
-
 		System.out.println("printDuplicate : "+printDuplicate);
 
 		Set<String> setString=new HashSet<>();
-
 		System.out.println(listString.stream().filter(x -> !setString.add(x)).collect(Collectors.toList()));
 
 		Map<Integer,List<String>> groupingByLength=listString.stream().collect(Collectors.groupingBy(String::length));
@@ -87,7 +76,7 @@ public class JavaStreams {
 
 		OptionalDouble average=list.stream().mapToInt(Integer::intValue).average();
 
-		System.out.println(average);
+		System.out.println("average :"+ average);
 
 		List<String> removeDuplicates=listString.stream().distinct().collect(Collectors.toList());
 
@@ -97,20 +86,9 @@ public class JavaStreams {
 
 		System.out.println(startsWithList);
 
-		Map<String,Long> noOfOccur=listString.stream().collect(Collectors.groupingBy(n->n,Collectors.counting()));
-
-		noOfOccur.forEach((key,value) -> System.out.println(key +" "+ value));
-
-		Map<Integer,Long> numOcc=list.stream().collect(Collectors.groupingBy(n -> n,Collectors.counting()));
-
-		numOcc.forEach((key,value) -> System.out.println(key +" "+ value));
-
 		String s="raghureddy";
-
-//		char[] c=s.toCharArray();
-		
-		System.out.println(s.chars().mapToObj(e -> (char)e).collect(Collectors.groupingBy(t -> t,Collectors.counting())));
-
+		Map<Object, Long> collect6 = s.chars().mapToObj(x->(char)x).collect(Collectors.groupingBy(x->x, LinkedHashMap::new, Collectors.counting()));
+		System.out.println("key value pair: "+collect6);
 		
 		List<abc> l = new ArrayList<>();
 		l.add(new abc(1,"xyz",2));
@@ -129,9 +107,6 @@ public class JavaStreams {
 		Map<Integer, Double> collect2 = l.stream().collect(Collectors.groupingBy(abc::getDept, Collectors.averagingInt(abc::getId)));
 		System.out.println(collect2);
 	
-		Map<Object, Long> collect6 = s.chars().mapToObj(x->(char)x).collect(Collectors.groupingBy(x->x, LinkedHashMap::new, Collectors.counting()));
-		System.out.println("key value pair: "+collect6);
-		
 		
 		Stream.iterate(1, i->i+1).limit(15).forEach(System.out::print);
 		System.out.println();
@@ -171,6 +146,18 @@ public class JavaStreams {
 		 char c = 'a';
 		 int sum4 = (int) str.chars().filter(x->x==c).count();
 		 System.out.println("Character count = " + sum4);
+		 
+		 
+		 String str2 = "Indivisibilities";
+		 Map<Character,Long> collect3 = str2.chars().mapToObj(x->(char)x).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+		 long count = collect3.values().stream().filter(x->x>0).count();
+		 System.out.println(count);
+		 
+		 List<Integer> listOfIntegers = Arrays.asList(71, 18, 42, 21, 67, 32, 95, 14, 56, 87);
+		 Map<Boolean, List<Integer>> oddEvenNumbersMap = 
+	                listOfIntegers.stream().collect(Collectors.partitioningBy(x -> x % 2 == 0));
+         Set<Entry<Boolean, List<Integer>>> entrySet = oddEvenNumbersMap.entrySet();
+         System.out.println("Odd and Even Numbers : "+ entrySet);
 	}
  
 }

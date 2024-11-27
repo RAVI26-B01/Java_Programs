@@ -139,7 +139,6 @@ public class JavaStreams2 {
 			    new Student(9, "Sonu", "Shankar", 27, "Female", "Computer Engineering", 2018, "Karnataka", 7),
 			    new Student(10, "Shubham", "Pandey", 26, "Male", "Instrumentation Engineering", 2017, "Mumbai", 98));
 
-	
 		List<Student> lstStuName = list.stream().filter(dt -> dt.getFirstName().startsWith("A"))
 			    .collect(Collectors.toList());
 
@@ -198,12 +197,6 @@ public class JavaStreams2 {
 	
 		Student student = list.stream().sorted(Comparator.comparing(Student::getRank)).skip(1).findFirst().get();
 		System.out.println("Second highest rank student  : "+student);
-		
-		String s= "malayalam";
-		System.out.println(s.chars().mapToObj(e -> (char)e).collect(Collectors.groupingBy(t -> t,Collectors.counting())));
-		
-		Map<Character, Long> collect2 = s.chars().mapToObj(x->(char)x).collect(Collectors.groupingBy(x->x,Collectors.counting()));
-		System.out.println(collect2);
 		
 	}
 }
