@@ -1,7 +1,9 @@
 package practice;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -172,5 +174,6 @@ public class JavaStreams3 {
        myList.stream()
              .findFirst()
              .ifPresent(System.out::println);
-   }
+       
+	}
 }
