@@ -59,15 +59,10 @@ public class JavaStreams {
 		List<Integer> printDuplicate=list.stream().filter(x-> !set.add(x)).collect(Collectors.toList());
 		System.out.println("printDuplicate : "+printDuplicate);
 
-		Set<String> setString=new HashSet<>();
-		System.out.println(listString.stream().filter(x -> !setString.add(x)).collect(Collectors.toList()));
-
 		Map<Integer,List<String>> groupingByLength=listString.stream().collect(Collectors.groupingBy(String::length));
-
 		groupingByLength.forEach((length,group) -> System.out.println(length +" "+ group));
 
 		String findFirst=listString.stream().filter(x -> x.startsWith("r")).findFirst().get();
-
 		System.out.println(findFirst);
 
 		Integer sum=list.stream().mapToInt(Integer::intValue).sum();
@@ -75,15 +70,12 @@ public class JavaStreams {
 		System.out.println(sum + " " + integer);
 
 		OptionalDouble average=list.stream().mapToInt(Integer::intValue).average();
-
 		System.out.println("average :"+ average);
 
 		List<String> removeDuplicates=listString.stream().distinct().collect(Collectors.toList());
-
 		System.out.println(removeDuplicates);
 
 		List<String> startsWithList=listString.stream().filter(x -> x.startsWith("r")).collect(Collectors.toList());
-
 		System.out.println(startsWithList);
 
 		String s="raghureddy";
@@ -114,6 +106,7 @@ public class JavaStreams {
 		System.out.println(sum2);
 		
 		int sum3 = Stream.iterate(1, i->i+1).limit(15).reduce(0, (i,j)->i+j);
+		int sm4 = Stream.iterate(1, i->i+1).limit(15).reduce(0, Integer::sum);
 		System.out.println(sum3);
 		
 		
@@ -144,13 +137,13 @@ public class JavaStreams {
 		 // count character in a string
 		 String str = "malayalam";
 		 char c = 'a';
-		 int sum4 = (int) str.chars().filter(x->x==c).count();
+		 long sum4 =  str.chars().filter(x->x==c).count();
 		 System.out.println("Character count = " + sum4);
 		 
 		 
 		 String str2 = "Indivisibilities";
 		 Map<Character,Long> collect3 = str2.chars().mapToObj(x->(char)x).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-		 long count = collect3.values().stream().filter(x->x>0).count();
+		 long count = collect3.values().stream().filter(x->x>1).count();
 		 System.out.println(count);
 		 
 		 List<Integer> listOfIntegers = Arrays.asList(71, 18, 42, 21, 67, 32, 95, 14, 56, 87);

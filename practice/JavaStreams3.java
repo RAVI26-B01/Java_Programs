@@ -1,9 +1,7 @@
 package practice;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -104,6 +102,9 @@ public class JavaStreams3 {
        
        int[] reversedArray1 = IntStream.range(0, array1.length).map(x -> array1[array1.length - 1 - x]).toArray();
        System.out.println("Reverse Array : "+ Arrays.toString(reversedArray1));
+       
+       int[] array2 = Stream.iterate(0, x->x+1).limit(array1.length).mapToInt(x -> array1[array1.length - 1 - x]).toArray();
+       System.out.println("Reverse Array : "+ Arrays.toString(array2));
        
        List<Integer> evenNums = IntStream.rangeClosed(1, 10).map(x -> x * 2).mapToObj(x->x).collect(Collectors.toList());
        System.out.println("First 10 even Numbers : "+ evenNums);

@@ -149,7 +149,8 @@ public class JavaStreams2 {
 			
 		long countStudent = list.stream().count();
 		System.out.println("Total count of students : "+countStudent);
-		
+		Student student2 = list.stream().max((x,y)->Integer.valueOf(x.getAge()).compareTo(Integer.valueOf(y.getAge()))).get();
+		System.out.println("Max age of student : "+student2.getAge()); 
 		OptionalInt maxAge = list.stream().mapToInt(Student::getAge).max();
 		System.out.println("Max age of student : "+maxAge.getAsInt());
 		
@@ -188,7 +189,7 @@ public class JavaStreams2 {
 	
 	
 		Map<String, Optional<Student>> studentData = list.stream().collect(Collectors.groupingBy(Student::getDepartmantName,
-			    Collectors.minBy(Comparator.comparing(Student::getRank))));
+			    Collectors.maxBy(Comparator.comparing(Student::getRank))));
 		System.out.println("Highest rank in each department  : "+studentData);
 		
 		List<Student> stuRankSorted = list.stream().sorted(Comparator.comparing(Student::getRank))
