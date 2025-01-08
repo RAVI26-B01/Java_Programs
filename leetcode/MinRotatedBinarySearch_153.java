@@ -27,7 +27,7 @@ public class MinRotatedBinarySearch_153 {
 				min = Math.min(min, arr1[low]);
 				low = mid+1;
 			}else { // right is sorted
-				min = Math.min(min, arr1[low]);
+				min = Math.min(min, arr1[mid]);
 				high = mid-1;
 			}
 		}

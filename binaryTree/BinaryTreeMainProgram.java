@@ -235,14 +235,5 @@ public class BinaryTreeMainProgram {
 		}
 }
 
-class Pair{
-	
-	Node node;
-	int hd;
-	public Pair(Node current, int i) {
-		this.node=current;
-		this.hd=i;
-	}
-}
 
 

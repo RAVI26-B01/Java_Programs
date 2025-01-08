@@ -7,11 +7,20 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.TreeMap;
 
+class Pair{
+	Node node;
+	int hd;
+	public Pair(Node current, int i) {
+		this.node=current;
+		this.hd=i;
+	}
+}
+
 public class TreeViews {
 
 	public List<Integer> topView(Node current) {
 		List<Integer> ans = new ArrayList<>();
-		if(current==null)
+		if(current == null)
 			return ans;
 		Map<Integer,Integer> map = new TreeMap<>();
 		Queue<Pair> queue = new LinkedList<>();

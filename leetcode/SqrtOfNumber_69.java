@@ -4,11 +4,28 @@ public class SqrtOfNumber_69 {
 
 	public static void main(String[] args) {
 
-		int n=8;
+		int n=37;
 		int findSqrt = findSqrt(n);
 		System.out.println(findSqrt);
+		
+		int findSqrt1 = findSqrt1(n);
+		System.out.println(findSqrt1);
+		
 	}
 
+	// naive approach
+	private static int findSqrt1(int n) {
+		int ans = 0;
+		for(int i = 0 ; i <= n ; i++) {
+			if(i*i<=n)
+				ans = i;
+			else
+				break;
+		}
+		return ans;
+	}
+
+	//better approach
 	private static int findSqrt(int n) {
 		int end=n;
 		int start=0;
