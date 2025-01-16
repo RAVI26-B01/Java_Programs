@@ -10,6 +10,7 @@ public class BinarySubArrayWithSum {
 		int count = numSubarraysWithSum(nums, goal);
 		System.out.println(count);
 	}
+	
 	/*
 	 	TC : O(2*2N) ==> O(N)
 	 	SC : O(1)

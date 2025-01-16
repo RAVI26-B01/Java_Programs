@@ -32,14 +32,15 @@ public class BinaryTreeMainProgram {
 			System.out.println("press 13 to Reverse odd levels");
 			System.out.println("press 14 to Covert BST to GST");
 			System.out.println("press 15 to Check Path-Sum");
+			System.out.println("press 100 to Print-Tree");
 			System.out.println();
 			
 			System.out.println("enter your choice");
 			int choice=scan.nextInt();
 				switch(choice) {
 					case 1:insert();break;
-					case 2:preorderTraversal(root);break;
-					case 3:inorderTraversal(root);break;
+					case 2:preorderTraversal1(root);break;
+					case 3:inorderTraversal1(root);break;
 					case 4:postorderTraversal(root);break;
 					case 5:leverOrderTraversal(root);break;
 					case 6:zigZagOrderTraversal(root);break;
@@ -52,12 +53,12 @@ public class BinaryTreeMainProgram {
 					case 13:reverseOddLevels(root);break;
 					case 14:BSTTOGST(root);break;
 					case 15:checkPathSum(root);break;
+					case 100:printTree(root);break;
 					default :System.out.println("program terminated :-((");System.exit(0);
 					
 				}
 			}
-			
-	}
+		}
 
 		private static void BSTTOGST(Node root) {
 			BSTtoGST_1038 bsTtoGST = new BSTtoGST_1038();
@@ -108,12 +109,24 @@ public class BinaryTreeMainProgram {
 			}
 		}
 		
+		public static  void preorderTraversal1(Node current) {
+			TreeTraversal_iterative traversal_iterative = new TreeTraversal_iterative();
+			List<Integer> preOrderTraversal = traversal_iterative.preOrderTraversal(current);
+			System.out.println(preOrderTraversal);
+		}
+		
 		private static void inorderTraversal(Node current) {
 			if(current!=null){
 				inorderTraversal(current.left);
 				System.out.print(current.data+" ");
 				inorderTraversal(current.right);
 			}
+		}
+		
+		private static void inorderTraversal1(Node current) {
+			TreeTraversal_iterative traversal_iterative = new TreeTraversal_iterative();
+			List<Integer> inOrderTraversal = traversal_iterative.inOrderTraversal(current);
+			System.out.println(inOrderTraversal);
 		}
 		
 		private static void postorderTraversal(Node current) {
@@ -184,8 +197,8 @@ public class BinaryTreeMainProgram {
 		private static int max_depth(Node current) {
 			if(current==null)
 				return 0;
-			int l= max_depth(current.left);
-			int r=max_depth(current.right);
+			int l = max_depth(current.left);
+			int r = max_depth(current.right);
 			return 1+Math.max(l, r);
 		}
 		
@@ -232,6 +245,10 @@ public class BinaryTreeMainProgram {
 			PathSum_112 pathSum = new PathSum_112();
 			boolean hasPathSum = pathSum.hasPathSum(root2, sum);
 			System.out.println(hasPathSum);
+		}
+		
+		private static void printTree(Node root2) {
+			TreePrinter.printNode(root2);
 		}
 }
 
