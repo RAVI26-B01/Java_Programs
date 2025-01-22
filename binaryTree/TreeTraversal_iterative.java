@@ -1,6 +1,8 @@
 package binaryTree;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -55,6 +57,9 @@ public class TreeTraversal_iterative {
 		return ans;
 	}
 
+	/*
+	 * Iterative post-OrderTraversal using two stack
+	 */
 	public List<Integer> postOrderTraversal(Node curr) {
 		List<Integer> ans = new ArrayList<>();
 		if(curr == null)
@@ -77,5 +82,34 @@ public class TreeTraversal_iterative {
 		return ans;
 	}
 
+	/*
+	 * Iterative post-OrderTraversal using one stack
+	 */
+	 public List<Integer> postOrderItrOneStack(Node root){
+		 List<Integer> ans = new ArrayList<>();
+			if(root == null)
+				return ans;
+	        Node current = root;
+	        Deque<Node> stack = new LinkedList<>();
+	        while(current != null || !stack.isEmpty()){
+	            if(current != null){
+	                stack.addFirst(current);
+	                current = current.left;
+	            }else{
+	                Node temp = stack.peek().right;
+	                if (temp == null) {
+	                    temp = stack.poll();
+	                    ans.add(temp.data);
+	                    while (!stack.isEmpty() && temp == stack.peek().right) {
+	                        temp = stack.poll();
+	                       ans.add(temp.data);
+	                    }
+	                } else {
+	                    current = temp;
+	                }
+	            }
+	        }
+	        return ans;
+	    }
 	
 }
