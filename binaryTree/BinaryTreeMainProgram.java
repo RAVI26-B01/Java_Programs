@@ -27,11 +27,14 @@ public class BinaryTreeMainProgram {
 			System.out.println("press 8 to Top-View");
 			System.out.println("press 9 to left view Elements");
 			System.out.println("press 10 to right view Elements");
-			System.out.println("press 11 to Boundary traversal");
-			System.out.println("press 12 to Deepest Leaves sum");
+			System.out.println("press 11 to Bottom-View");
+			System.out.println("press 12 to Boundary traversal");
 			System.out.println("press 13 to Reverse odd levels");
 			System.out.println("press 14 to Covert BST to GST");
 			System.out.println("press 15 to Check Path-Sum");
+			System.out.println("press 16 to Deepest Leaves sum");
+			System.out.println("press 17 to Longest Diameter of Tree");
+			System.out.println("press 18 to Vertical Order Traversal");
 			System.out.println("press 100 to Print-Tree");
 			System.out.println();
 			
@@ -41,24 +44,49 @@ public class BinaryTreeMainProgram {
 					case 1:insert();break;
 					case 2:preorderTraversal1(root);break;
 					case 3:inorderTraversal1(root);break;
-					case 4:postorderTraversal(root);break;
+					case 4:postorderTraversal1(root);break;
 					case 5:leverOrderTraversal(root);break;
 					case 6:zigZagOrderTraversal(root);break;
 					case 7:maximunDepth(root);break;
 					case 8:topView(root);break;
 					case 9:leftView(root);break;
 					case 10:rightView(root);break;
-					case 11:boundaryTraversal(root);break;
-					case 12:deepestLeavesSum(root);break;
+					case 11:bottomView(root);break;
+					case 12:boundaryTraversal(root);break;
 					case 13:reverseOddLevels(root);break;
 					case 14:BSTTOGST(root);break;
 					case 15:checkPathSum(root);break;
+					case 16:deepestLeavesSum(root);break;
+					case 17:diameterOfTree(root);break;
+					case 18:verticalOrderTraversal(root);break;
 					case 100:printTree(root);break;
 					default :System.out.println("program terminated :-((");System.exit(0);
 					
 				}
 			}
 		}
+
+
+
+		/*
+		 The diameter of a binary tree is the length of the longest path between any two nodes in a tree.
+		  This path may or may not pass through the root.
+		 */
+		private static void diameterOfTree(Node root) {
+			int[] diameter = new int[1];
+	        diameter[0] = 0;
+	        findDiameter(root, diameter);
+	        System.out.println(diameter[0]);
+		}
+
+		 public static int findDiameter(Node root, int[] diameter){
+		        if(root == null)
+		            return 0;
+		        int l = findDiameter(root.left, diameter);
+		        int r = findDiameter(root.right, diameter);
+		        diameter[0] = Math.max(diameter[0], l+r);
+		        return 1+Math.max(l,r);
+		    }
 
 		private static void BSTTOGST(Node root) {
 			BSTtoGST_1038 bsTtoGST = new BSTtoGST_1038();
@@ -137,56 +165,27 @@ public class BinaryTreeMainProgram {
 			}
 		}
 		
+		private static void postorderTraversal1(Node current) {
+			TreeTraversal_iterative traversal_iterative = new TreeTraversal_iterative();
+			List<Integer> postOrderTraversal = traversal_iterative.postOrderTraversal(current);
+			System.out.println(postOrderTraversal);
+		}
+		
 		private static void leverOrderTraversal(Node current) {
-			Queue<Node> queue = new LinkedList<>();
-			List<List<Integer>> ans = new LinkedList<List<Integer>>();
-			if(current == null){
-				return;
-			}
-			queue.offer(current);
-			while(!queue.isEmpty()){
-				int levelNums = queue.size();
-				List<Integer> subList = new LinkedList<>();
-				for( int i=0 ;i<levelNums ; i++){
-					if(queue.peek().left!=null)
-						queue.offer(queue.peek().left);
-					if(queue.peek().right!=null)
-						queue.offer(queue.peek().right);
-					subList.add(queue.poll().data);
-					
-				}
-				ans.add(subList);
-			}
-			System.out.println(ans);
-			}
+			List<List<Integer>> levelOrderTraversal = TreeTraversal.levelOrderTraversal(current);
+			System.out.println(levelOrderTraversal);
+		}
 		
 		private static void zigZagOrderTraversal(Node current) {
-			Queue<Node> queue = new LinkedList<>();
-			List<List<Integer>> ans = new LinkedList<List<Integer>>();
-			if(current == null){
-				return;
-			}
-			queue.offer(current);
-			boolean leftToRight = true;
-			while(!queue.isEmpty()){
-				int levelNums = queue.size();
-				List<Integer> subList = new LinkedList<>();
-				for( int i=0 ;i<levelNums ; i++){
-					if(queue.peek().left!=null)
-						queue.offer(queue.peek().left);
-					if(queue.peek().right!=null)
-						queue.offer(queue.peek().right);
-					subList.add(queue.poll().data);
-					
-				}
-				if(!leftToRight)
-					Collections.reverse(subList);
-				ans.add(subList);
-				leftToRight=!leftToRight;
-			}
-			System.out.println(ans);
-			}
+			List<List<Integer>> zigZagOrderTraversal = TreeTraversal.zigZagOrderTraversal(current);
+			System.out.println(zigZagOrderTraversal);
+		}
 		
+		private static void verticalOrderTraversal(Node current) {
+			List<List<Integer>>  verticalOrderTraversal = TreeTraversal.verticalOrderTraversal(current);
+			System.out.println(verticalOrderTraversal);
+			
+		}
 
 		private static void maximunDepth(Node current) {
 			int max_depth = max_depth(current);
@@ -219,6 +218,13 @@ public class BinaryTreeMainProgram {
 			TreeViews view = new TreeViews();
 			List<Integer> rightView = view.rightView(current);
 			System.out.println(rightView);
+		}
+		
+		private static void bottomView(Node current) {
+			TreeViews view = new TreeViews();
+			List<Integer> bottomView = view.bottomView(current);
+			System.out.println(bottomView);
+			
 		}
 		
 		private static void boundaryTraversal(Node root2) {

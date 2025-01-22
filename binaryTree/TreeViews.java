@@ -86,6 +86,31 @@ public class TreeViews {
 	/*
 	 * right view ends
 	 */
+
+	public List<Integer> bottomView(Node current) {
+		List<Integer> ans = new ArrayList<>();
+		if(current == null)
+			return ans;
+		Map<Integer,Integer> map = new TreeMap<>();
+		Queue<Pair> queue = new LinkedList<>();
+		queue.add(new Pair(current,0));
+		while(!queue.isEmpty()){
+			Pair remove = queue.remove();
+			int hd = remove.hd;
+			Node temp = remove.node;
+//			if(!map.containsKey(hd))
+			map.put(hd, temp.data);
+			
+			if(temp.left!=null){
+				queue.add(new Pair(temp.left,hd-1));
+			}
+			if(temp.right!=null){
+				queue.add(new Pair(temp.right,hd+1));
+			}
+		}
+		map.entrySet().stream().forEach(x->ans.add(x.getValue()));
+		return ans;
+	}
 	
 	
 }

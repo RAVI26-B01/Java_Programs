@@ -32,8 +32,12 @@ public class TreeTraversal_iterative {
 		return ans;
 	}
 
+	/*
+	 * LVR
+	 * move to extreme left 
+	 * when no element is found print the element and move right
+	 */
 	public List<Integer> inOrderTraversal(Node curr) {
-
 		List<Integer> ans = new ArrayList<>();
 		if(curr == null)
 			return ans;
@@ -44,12 +48,32 @@ public class TreeTraversal_iterative {
                 s.push(curr);
                 curr = curr.left;
             }
-
             curr = s.pop();
             ans.add(curr.data);
             curr = curr.right;
         }
+		return ans;
+	}
 
+	public List<Integer> postOrderTraversal(Node curr) {
+		List<Integer> ans = new ArrayList<>();
+		if(curr == null)
+			return ans;
+		Stack<Node> s1 = new Stack<>();
+		Stack<Node> s2 = new Stack<>();
+		s1.push(curr);
+		while(!s1.isEmpty()) {
+			Node node = s1.pop();
+			s2.push(node);
+			if(node.left !=null)
+				s1.push(node.left);
+			if(node.right != null)
+				s1.push(node.right);
+		}
+		
+		while(!s2.isEmpty()) {
+			ans.add(s2.pop().data);
+		}
 		return ans;
 	}
 
