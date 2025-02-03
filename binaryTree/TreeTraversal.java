@@ -1,7 +1,6 @@
 package binaryTree;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,6 +20,15 @@ class Tuple{
 }
 
 public class TreeTraversal {
+	
+	class Pair{
+		Node node;
+		int hd;
+		public Pair(Node current, int i) {
+			this.node=current;
+			this.hd=i;
+		}
+	}
 
 	public static List<List<Integer>> levelOrderTraversal(Node current) {
 		Queue<Node> queue = new LinkedList<>();
@@ -111,7 +119,52 @@ public class TreeTraversal {
 				}
 			}
 		}
-		
 		return ans;
 	}
+	
+	 public int widthOfBinaryTree(Node root) {
+		 	int ans = 0;
+	        if (root == null) {
+	            return 0;
+	        }
+
+	        Queue<Pair> q = new LinkedList<>();
+	        q.add(new Pair(root, 0));
+
+	        while (!q.isEmpty()) {
+	            int size = q.size();
+	            int mmin = q.peek().hd;
+	            int first =0, last = 0;
+
+	            for (int i = 0; i < size; i++) {
+	                int cur_id = q.peek().hd - mmin;
+	                Node node = q.peek().node;
+	                q.poll();
+
+	                // If this is the first node in the level,
+	                // update the 'first' variable
+	                // starting node can start from any where
+	                if (i == 0) {
+	                    first = cur_id;
+	                }
+
+	                // If this is the last node in the level,
+	                // update the 'last' variable
+	                if (i == size - 1) {
+	                    last = cur_id;
+	                }
+
+	                if (node.left != null) {
+	                    q.add(new Pair(node.left, cur_id * 2 + 1));
+	                }
+	                if (node.right != null) {
+	                    q.add(new Pair(node.right, cur_id * 2 + 2));
+	                }
+	            }
+	            ans = Math.max(ans, last - first + 1);
+	        }
+	        return ans;
+	    }
+	
+	
 }
