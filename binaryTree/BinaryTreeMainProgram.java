@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import binarySearch.SearchInTree;
 import leetcode.BSTtoGST_1038;
 import leetcode.PathSum_112;
+import practice.Practice;
 
 @SuppressWarnings({"unused", "resource"})
 public class BinaryTreeMainProgram {
@@ -40,6 +42,14 @@ public class BinaryTreeMainProgram {
 			System.out.println("press 24 to Find Width of Tree");
 			System.out.println("press 25 to Print Nodes at K distance");
 			System.out.println("press 26 to Find Time Required to Burn Tree");
+			System.out.println("press 27 to Count Nodes");
+			System.out.println("press 28 to Serialize & De-Serialize");
+			System.out.println("press 29 to Morris Travel");
+			System.out.println("press 30 to Search in Binary Tree");
+			System.out.println("press 31 to find Ceil");
+			System.out.println("press 32 to find Floor");
+			System.out.println("press 33 to delete Node");
+			System.out.println("press 34 to check BST or BT");
 			System.out.println("press 100 to Print-Tree");
 			System.out.println();
 			
@@ -73,6 +83,13 @@ public class BinaryTreeMainProgram {
 					case 25:printKDistanceNodes(root);break;
 					case 26:timeToBurnTree(root);break;
 					case 27:countNodes(root);break;
+					case 28:serializeDeserialize(root);break;
+					case 29:morrisTravel(root);break;
+					case 30:searchNode(root);break;
+					case 31:findCeil(root);break;
+					case 32:findFloor(root);break;
+					case 33:deleteNode(root);break;
+					case 34:checkBstOrBt(root);break;
 					case 100:printTree(root);break;
 					default :System.out.println("program terminated :-((");System.exit(0);
 					
@@ -80,7 +97,7 @@ public class BinaryTreeMainProgram {
 			}
 		}
 	
-
+	//approach - 1
 	private static void insert() {
 		Scanner scan=new Scanner(System.in);
 		System.out.print("Enter item to insert :");
@@ -115,6 +132,43 @@ public class BinaryTreeMainProgram {
 			}
 		}
 	}
+	
+	//approach - 2
+	private static void insert1() {
+		Scanner scan=new Scanner(System.in);
+		System.out.print("Enter item to insert :");
+		int item=scan.nextInt();
+		
+		Node node=new Node();
+		node.left=null;
+		node.data=item;
+		node.right=null;
+		
+		Node current,previous;
+		if(root == null){
+			root=node;
+		}else{
+			current = root;
+			while(true) {
+				if(node.data >= current.data) {
+					if(current.right !=null) {
+						current=current.right;
+					}else {
+						current.right = node;
+						break;
+					}
+				}else {
+					if(current.left != null) {
+						current = current.left;
+					}else {
+						current.left = node;
+						break;
+					}
+				}
+			}
+		}
+	}
+	
 	
 	public static  void preorderTraversal(Node current) {
 		if(current!=null){
@@ -343,6 +397,65 @@ public class BinaryTreeMainProgram {
 		int count = countNodes.countNodes(root2);
 		System.out.println(count);
 	}
+	
+	private static void serializeDeserialize(Node root2) {
+		SerializeDeserializeTree sd = new SerializeDeserializeTree();
+		String serialize = sd.serialize(root2);
+		System.out.println(serialize);
+		
+		Node deSerialize = sd.deSerialize(serialize);
+		TreePrinter.printNode(deSerialize);
+	}
+	
+	private static void morrisTravel(Node root2) {
+		MorrisTravel morrisTravel = new MorrisTravel();
+		List<Integer> inOrder = morrisTravel.inOrder(root2);
+		System.out.println("In-Order : "+ inOrder);
+		
+		Practice name = new Practice();
+		List<Integer> inOrder2 = name.inOrder(root2);
+		System.out.println("In-Order2 : "+ inOrder2);
+		
+		List<Integer> preOrder = morrisTravel.preOrder(root2);
+		System.out.println("Pre-Order : "+ preOrder);
+	}
+	
+	private static void searchNode(Node root2) {
+		SearchInTree searchInTree = new SearchInTree();
+		Node search = searchInTree.search(root2);
+		if(search != null) {
+			System.out.println("Node found :" + search.data);
+		}else {
+			System.err.println("Node not found");
+		}
+	}
+	
+
+	private static void findCeil(Node root2) {
+		Scanner scan = new Scanner(System.in);
+		System.out.print("Enter key : ");
+		int key = scan.nextInt();
+		System.out.println(SearchInTree.findCeil(root2, key));
+	}
+	
+
+	private static void findFloor(Node root2) {
+		Scanner scan = new Scanner(System.in);
+		System.out.print("Enter key : ");
+		int key = scan.nextInt();
+		System.out.println(SearchInTree.findFloor(root2, key));
+		
+	}
+	
+	private static void deleteNode(Node root2) {
+		DeleteNode delete = new DeleteNode();
+		Node delete1 = delete.delete1(root2);
+	}
+	
+	private static void checkBstOrBt(Node root2) {
+		
+	}
+
 }
 
 
