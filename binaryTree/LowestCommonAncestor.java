@@ -2,8 +2,19 @@ package binaryTree;
 
 public class LowestCommonAncestor {
 
-	public Node lowestCommonAncestor(Node root, Node p, Node q) {
-        if(root == null || root == p || root == q )
+	/*
+	  Brute force approach is
+	  find p & q using Root to node path method  
+	  save the answers values in different list
+	  once the different value find return previous value of list
+	  eg: if p=25 & q=75
+	      p_ans -> [100, 50, 25]
+	  	  q_ans -> [100, 50, 75]
+	  output : 50
+	  
+	 */
+	public Node lowestCommonAncestor(Node root, int p, int q) {
+        if(root == null || root.data == p || root.data == q )
         {
             return root;
         }

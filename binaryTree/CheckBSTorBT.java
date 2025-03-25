@@ -18,6 +18,7 @@ public class CheckBSTorBT {
 	}
 	
 	
+	//approach - 2
 	  public boolean isBST(Node root) {
         boolean[] flag = {true};  
         int[] temp = {Integer.MIN_VALUE}; 

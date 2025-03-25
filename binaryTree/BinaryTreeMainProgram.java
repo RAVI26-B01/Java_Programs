@@ -90,6 +90,7 @@ public class BinaryTreeMainProgram {
 					case 32:findFloor(root);break;
 					case 33:deleteNode(root);break;
 					case 34:checkBstOrBt(root);break;
+					case 35:flattenBTtoLL(root);break;
 					case 100:printTree(root);break;
 					default :System.out.println("program terminated :-((");System.exit(0);
 					
@@ -97,6 +98,7 @@ public class BinaryTreeMainProgram {
 			}
 		}
 	
+
 	//approach - 1
 	private static void insert() {
 		Scanner scan=new Scanner(System.in);
@@ -373,7 +375,8 @@ public class BinaryTreeMainProgram {
 
 	private static void findLowestCommonAncestors(Node current) {
 		LowestCommonAncestor ancestor = new LowestCommonAncestor();
-		Node lowestCommonAncestor = ancestor.lowestCommonAncestor(current, null, null);
+		Node lowestCommonAncestor = ancestor.lowestCommonAncestor(current, 25, 125);
+		System.out.println(lowestCommonAncestor.data);
 	}
 
 	private static void findWidthOfTree(Node root2) {
@@ -454,6 +457,13 @@ public class BinaryTreeMainProgram {
 	
 	private static void checkBstOrBt(Node root2) {
 		
+	}
+	
+	
+	private static void flattenBTtoLL(Node root2) {
+		FlattenBTtoLinkedList bTtoLinkedList = new FlattenBTtoLinkedList();
+		bTtoLinkedList.flatternTree1(root2);
+		printTree(root2);
 	}
 
 }

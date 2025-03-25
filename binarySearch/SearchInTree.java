@@ -51,4 +51,13 @@ public class SearchInTree {
         }
         return floor;
 	}
+	
+	public static int findMin(Node root) {
+		int min = Integer.MAX_VALUE;
+		 while(root != null) {
+			 min = root.data;
+			 root = root.left;
+		 }
+		return min;
+	}
 }
