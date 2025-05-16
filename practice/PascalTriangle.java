@@ -6,7 +6,7 @@ import java.util.List;
 public class PascalTriangle {
 
 	public static void main(String[] args) {
-		int n = 6;
+		int n = 7;
 		List<List<Integer>> pascal = getPascal(n);
 		for(List<Integer> p : pascal) {
 			System.out.println(p);
