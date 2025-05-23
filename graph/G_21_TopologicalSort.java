@@ -52,6 +52,7 @@ public class G_21_TopologicalSort {
 	            adj.get(edge[0]).add(edge[1]);
 	        }
 		        
+//	        System.out.println(adj);
 		    for(int i=0; i<V; i++){
 		        if(!vis[i]){
 		            dfs(i, vis, adj, stack);
