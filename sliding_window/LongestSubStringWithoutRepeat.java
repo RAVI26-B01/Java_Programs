@@ -1,6 +1,8 @@
 package sliding_window;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 // leetcode 3
 public class LongestSubStringWithoutRepeat {
@@ -9,6 +11,9 @@ public class LongestSubStringWithoutRepeat {
 		String s = "abcabcbb";
 		int len = lengthOfLongestSubstring(s);
 		System.out.println(len);
+		
+		int disctLen = findDisctLen(s);
+		System.out.println(disctLen);
 	}
 	
 	public static int lengthOfLongestSubstring1(String s) {
@@ -50,4 +55,27 @@ public class LongestSubStringWithoutRepeat {
         return len;
         
 	}
+	
+	
+	private static int findDisctLen(String s) {
+	    Set<Character> set = new HashSet<>();
+	    int maxLength = 0;
+	    int l = 0;
+	    int r = 0;
+	    while ( r < s.length()) {
+	        char c = s.charAt(r);
+
+	        while (set.contains(c)) {
+	            set.remove(s.charAt(l));
+	            l++;
+	        }
+
+	        set.add(c);
+	        maxLength = Math.max(maxLength, r - l + 1);
+	        r++;
+	    }
+
+	    return maxLength;
+	}
+	
 }

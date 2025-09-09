@@ -2,13 +2,13 @@ package recursion.codingbat;
 
 public class SplitArray {
 	public static void main(String[] args) {
-		int[] nums= {4, 1, 1, 2};
+		int[] nums= {2,3,4,1,2};
 		System.out.println(splitArrayHelper(0, nums, 0, 0));
 	}
 
 
-public static boolean splitArrayHelper(int start, int[] nums, int group1, 
-	    int group2) {
+	public static boolean splitArrayHelper(int start, int[] nums, int group1, 
+		    int group2) {
 	    if(start >= nums.length)
 	        return group1 == group2;
 	            
@@ -20,4 +20,7 @@ public static boolean splitArrayHelper(int start, int[] nums, int group1,
 	                                
 	    return false;
 	}
+	
+
+
 }

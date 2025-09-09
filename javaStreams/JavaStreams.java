@@ -1,4 +1,4 @@
-package practice;
+package javaStreams;
 
 import java.util.ArrayList;
 import java.util.Arrays;
