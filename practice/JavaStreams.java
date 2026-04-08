@@ -1,4 +1,4 @@
-package javaStreams;
+package practice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -151,6 +151,7 @@ public class JavaStreams {
 	                listOfIntegers.stream().collect(Collectors.partitioningBy(x -> x % 2 == 0));
          Set<Entry<Boolean, List<Integer>>> entrySet = oddEvenNumbersMap.entrySet();
          System.out.println("Odd and Even Numbers : "+ entrySet);
+         System.out.println("Odd and Even Numbers : "+ oddEvenNumbersMap);
 	}
  
 }

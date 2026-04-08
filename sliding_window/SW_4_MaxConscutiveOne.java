@@ -6,7 +6,7 @@ package sliding_window;
   This question is basically asking maximum number of 0's 
   we can have in our window such that this number is less than or equal to k
  */
-public class MaxConscutiveOne {
+public class SW_4_MaxConscutiveOne {
 
 	public static void main(String[] args) {
 		int[] nums = {1,1,1,0,0,0,1,1,1,1,0};
@@ -35,8 +35,8 @@ public class MaxConscutiveOne {
         			zero--;
         		l++;
         	}
-        		len = r-l+1;
-        		maxlen = Math.max(maxlen, len);
+    		len = r-l+1;
+    		maxlen = Math.max(maxlen, len);
         	r++;
         }
         return maxlen;

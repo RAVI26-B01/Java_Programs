@@ -1,7 +1,7 @@
 package sliding_window;
 
 // leetcode 76
-public class MiniumWindowSubString {
+public class SW_12_MiniumWindowSubString {
 	public static void main(String[] args) {
 		String s= "ADOBECODEBANC";
 		String t= "ABC";
@@ -27,6 +27,7 @@ public class MiniumWindowSubString {
 				count++;
 			}
 			chars[s.charAt(r)]--;
+			//if all the elements are present we are shrinking the window
 			while(count == t.length()) {
                 if(r-l+1<minLen){
                     minLen=r-l+1;
@@ -34,7 +35,7 @@ public class MiniumWindowSubString {
                 }
 
 				chars[s.charAt(l)]++;
-				if(chars[s.charAt(l)] > 0)
+				if(chars[s.charAt(l)] > 0)	//reducing the count so that we can go for new window
 					count--;
 				l++;
 			}

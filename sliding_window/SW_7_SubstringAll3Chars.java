@@ -2,10 +2,10 @@ package sliding_window;
 
 import java.util.Arrays;
 
-public class SubstringAll3Chars {
+public class SW_7_SubstringAll3Chars {
 
 	public static void main(String[] args) {
-		String s = "abcabc";
+		String s = "aaacbbc";
 		int numberOfSubstrings = numberOfSubstrings(s);
 		System.out.println(numberOfSubstrings);
 	}
@@ -33,23 +33,49 @@ public class SubstringAll3Chars {
       int l=0, count=0, ans=0;
       for(int r=0;r<ch.length;r++)
       {
-          if(arr[ch[r]-'a']==0)
+    	  // important logic -> increment count before adding adding into array
+    	  if(arr[ch[r]-'a']==0)
           {
               count++;
           }
           arr[ch[r]-'a']++;
+         
           while(count==3)
           {
               ans=ans+ch.length-r;
-              if(arr[ch[l]-'a']==1)
+              arr[ch[l]-'a']--;
+              if(arr[ch[l]-'a']==0)
               {
                   count--;
               }
-             
-              arr[ch[l]-'a']--;
               l++;
           }
       }
       return ans;
+	}
+	
+	
+	// preferred
+	public static int numberOfSubstrings1(String s) {
+	    int[] count = new int[3];
+	    int left = 0, unique = 0, result = 0;
+
+	    for (int right = 0; right < s.length(); right++) {
+	        int idx = s.charAt(right) - 'a';
+	        if(count[idx] == 0) 
+	        	unique++;
+	        count[idx]++;
+
+	        while (unique == 3) {
+	            result += s.length() - right;
+	            int leftIdx = s.charAt(left) - 'a';
+	            count[leftIdx]--;
+	            if(count[leftIdx] == 0) 
+	            	unique--;
+	            left++;
+	        }
+	    }
+
+	    return result;
 	}
 }

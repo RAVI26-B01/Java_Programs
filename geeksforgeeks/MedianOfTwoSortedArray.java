@@ -6,8 +6,8 @@ import java.util.stream.IntStream;
 public class MedianOfTwoSortedArray {
 
 	public static void main(String[] args) {
-		int ar1[] = {1, 3, 4, 8};
-		int ar2[] = {2, 5, 6, 8};
+		int ar1[] = {3, 13, 14, 18};
+		int ar2[] = {2, 5, 6, 18, 25, 29, 30};
 		
 		double median = getMedian(ar1, ar2);
 		System.out.println("median : "+ median);

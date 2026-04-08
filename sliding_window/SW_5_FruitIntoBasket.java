@@ -1,7 +1,10 @@
 package sliding_window;
 
+import java.util.HashMap;
+import java.util.Map;
+
 // leetcode 904
-public class FruitIntoBasket {
+public class SW_5_FruitIntoBasket {
 
 	public static void main(String[] args) {
 		int[] ar = {3, 3, 5, 3, 5, 4, 3, 3};
@@ -39,4 +42,27 @@ public class FruitIntoBasket {
         return ans;
         
     }
+	
+	public static int totalFruit1(int[] fruits) {
+	    Map<Integer, Integer> countMap = new HashMap<>();
+	    int l = 0, maxLen = 0;
+
+	    for (int r = 0; r < fruits.length; r++) {
+	        countMap.put(fruits[r], countMap.getOrDefault(fruits[r], 0) + 1);
+
+	        // Shrink the window if we have more than 2 distinct fruits
+	        while (countMap.size() > 2) {
+	            int leftFruit = fruits[l];
+	            countMap.put(leftFruit, countMap.get(leftFruit) - 1);
+	            if (countMap.get(leftFruit) == 0) {
+	                countMap.remove(leftFruit);
+	            }
+	            l++;
+	        }
+
+	        maxLen = Math.max(maxLen, r - l + 1);
+	    }
+
+	    return maxLen;
+	}
 }

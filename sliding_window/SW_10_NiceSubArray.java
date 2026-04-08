@@ -1,7 +1,7 @@
 package sliding_window;
 
 // leetcode 1248  similar to leetcode 930
-public class NiceSubArray {
+public class SW_10_NiceSubArray {
 
 	public static void main(String[] args) {
 		int[] nums = {1,5,2,1,3,7};

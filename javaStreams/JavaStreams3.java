@@ -32,6 +32,8 @@ public class JavaStreams3 {
        
        List<Integer> listOfIntegers2 = Arrays.asList(45, 12, 56, 15, 24, 75, 31, 89);
        Integer min = listOfIntegers2.stream().min(Integer::compareTo).get();
+       int asInt = listOfIntegers2.stream().mapToInt(x->x).min().getAsInt();
+       System.out.println("Minium :" + asInt);
        System.out.println("Minium :" + min);
        Integer max = listOfIntegers2.stream().max((a,b)->a.compareTo(b)).get();
        System.out.println("Maxium :"+ max);
@@ -40,6 +42,12 @@ public class JavaStreams3 {
        int[] b = new int[] {8, 3, 9, 5};
        int[] array = IntStream.concat(Arrays.stream(a), Arrays.stream(b)).distinct().sorted().toArray();
        System.out.println("Distinct & Sort 2 Arrays : "+ Arrays.toString(array));
+       
+       int[] result =Stream.of(a, b).flatMapToInt(Arrays::stream)  // Flatten Stream<int[]> to IntStream
+					    		    .distinct()
+					    		    .sorted()
+					    		    .toArray();
+       System.out.println("Distinct & Sort 2 Arrays : "+ Arrays.toString(result));
        
        List<Integer> listOfIntegers3 = Arrays.asList(45, 12, 56, 15, 24, 75, 31, 89);
        List<Integer> min_3_nums = listOfIntegers3.stream().sorted().limit(3).collect(Collectors.toList());
@@ -65,7 +73,7 @@ public class JavaStreams3 {
        Integer sumOfDigits = Stream.of(String.valueOf(i).split("")).collect(Collectors.summingInt(Integer::parseInt));
        System.out.println("Sum Of Digits 15623 :" +sumOfDigits);
        int reduce = String.valueOf(i).chars().map(x->(x-'0')).sum();
-       System.out.println(reduce);
+       System.out.println("Sum Of Digits 15623 :" +reduce);
        
        List<Integer> listOfIntegers4 = Arrays.asList(45, 12, 56, 15, 24, 75, 31, 89);
        Integer secondLargestNumber = listOfIntegers4.stream().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
@@ -108,6 +116,8 @@ public class JavaStreams3 {
        
        List<Integer> evenNums = IntStream.rangeClosed(1, 10).map(x -> x * 2).mapToObj(x->x).collect(Collectors.toList());
        System.out.println("First 10 even Numbers : "+ evenNums);
+       int[] array3 = IntStream.rangeClosed(1, 10).map(x -> x * 2).toArray();
+       System.out.println("First 10 even Numbers : "+ Arrays.toString(array3));
        
        List<String> listOfStrings2 = Arrays.asList("Pen", "Eraser", "Note Book", "Pen", "Pencil", "Pen", "Note Book", "Pencil");
        Map<String, Long> elementCountMap = listOfStrings2.stream()

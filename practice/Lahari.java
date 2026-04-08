@@ -1,6 +1,6 @@
 package practice;
 
-public class Alphabet {
+public class Lahari {
 
 	public static void main(String[] args) {
 
@@ -139,4 +139,5 @@ public class Alphabet {
 		}
 
 	}
+
 }

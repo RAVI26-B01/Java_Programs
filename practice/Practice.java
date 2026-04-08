@@ -1,38 +1,47 @@
 package practice;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
-import binaryTree.Node;
 
 public class Practice {
-	public List<Integer> inOrder(Node root){
-		List<Integer> ans = new ArrayList<>();
-		Node curr = root;
-		while(curr != null) {
-			if(curr.left == null) {
-				ans.add(curr.data);
-				curr= curr.right;
-			}else {
-				Node pre = curr.left;
-				while(pre.right != null && pre.right != curr) {
-					pre = pre.right;
-				}
-				if(pre.right == null) {
-					pre.right = curr;
-					curr = curr.left;
-				}else {
-					pre.right = null;
-					ans.add(curr.data);
-					curr = curr.right;
-				}
+	public static void main(String[] args) {
+		int[] ar = {6, 4, 2, 9, 8, 5};
+		int n = ar.length;
+		
+		quickSort(ar, 0, n-1);
+		System.out.println(Arrays.toString(ar));
+	}
+
+	private static void quickSort(int[] ar, int l, int h) {
+
+		if(l<h) {
+			int pivot = partion(ar, l, h);
+			quickSort(ar, l, pivot-1);
+			quickSort(ar, pivot+1, h);
+		}
+	}
+
+	private static int partion(int[] ar, int l, int h) {
+		int i = l-1;
+		int pivot = ar[h];
+		
+		for(int j = l; j<h ; j++) {
+			
+			if(ar[j]<pivot)
+			{
+				i++;
+				int temp= ar[i];
+				ar[i]=ar[j];
+				ar[j]=temp;
 			}
 		}
-		return ans;
 		
+		int temp = ar[i+1];
+		ar[i+1]=ar[h];
+		ar[h]=temp;
+		return i+1;
 	}
+
+
+
+
 }

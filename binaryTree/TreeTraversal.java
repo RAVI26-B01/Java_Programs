@@ -6,7 +6,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.Stack;
 import java.util.TreeMap;
+
+import binaryTree.TreeTraversal.Pair;
 
 class Tuple{
 	Node node;
@@ -165,6 +168,44 @@ public class TreeTraversal {
 	        }
 	        return ans;
 	    }
+
+	public  void preInPostTraversal(Node current) {
+		
+		List<Integer> pre = new ArrayList<>();
+		List<Integer> in = new ArrayList<>();
+		List<Integer> post = new ArrayList<>();
+	
+		Stack<Pair> stack = new Stack<Pair>();
+		stack.add(new Pair(current, 1));
+		
+		while(!stack.isEmpty()) {
+			Pair pop = stack.pop();
+			
+			if(pop.hd==1) {
+				pre.add(pop.node.data);
+				pop.hd++;
+				stack.push(pop);
+				if(pop.node.left!=null) {
+					stack.add(new Pair(pop.node.left, 1));
+				}
+			}
+			else if(pop.hd==2) {
+				in.add(pop.node.data);
+				pop.hd++;
+				stack.push(pop);
+				if(pop.node.right != null) {
+					stack.add(new Pair(pop.node.right, 1));
+				}
+			}
+			else {
+				post.add(pop.node.data);
+			}
+		}
+		
+		System.out.println("pre-order traversal" + pre);
+		System.out.println("in-order traversal" + in);
+		System.out.println("post-order traversal" + post);
+	}
 	
 	
 }

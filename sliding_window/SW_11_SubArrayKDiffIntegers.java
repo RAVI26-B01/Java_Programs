@@ -1,11 +1,11 @@
 package sliding_window;
 
 // leetcode 992
-public class SubArrayKDiffIntegers {
+public class SW_11_SubArrayKDiffIntegers {
 
 	public static void main(String[] args) {
-		int[] nums = {1,2,1,3,4};
-		int k = 3;
+		int[] nums = {1,2,1,2,4};
+		int k = 2;
 		int count = subarraysWithKDistinct(nums, k);
 		System.out.println(count);
 	}
@@ -14,6 +14,7 @@ public class SubArrayKDiffIntegers {
 		
 		int count = helper(nums, k) ;
 		int count2 = helper(nums, k-1);
+		System.out.println(count + " "+ count2);
 		return count - count2;
        
 	}

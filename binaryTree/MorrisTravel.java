@@ -11,6 +11,9 @@ public class MorrisTravel {
 	🌳 2nd case: before going left, make right most node on left subtree
 	 			 connected to current node, then go left
 	🌳 3rd case: if thread is already pointed to current node, then remove the thread
+	
+	TC -> O(N)
+	SC -> O(1)
 	 */
 	public List<Integer> inOrder(Node root){
 		List<Integer> ans = new ArrayList<>();

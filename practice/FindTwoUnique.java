@@ -32,7 +32,7 @@ public class FindTwoUnique {
 
     // Driver code
     public static void main(String[] args) {
-        int[] arr = {8, 4, 8, 4, 7,9};
+        int[] arr = {8, 4, 8, 4, 4 ,9};
         int[] result = get2NonRepeatingNos(arr);
         System.out.println("The non-repeating elements are " + result[0] + " and " + result[1]);
     }

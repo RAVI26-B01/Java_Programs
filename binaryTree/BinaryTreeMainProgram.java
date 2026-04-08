@@ -7,6 +7,7 @@ import java.util.Scanner;
 import binarySearch.SearchInTree;
 import leetcode.BSTtoGST_1038;
 import leetcode.PathSum_112;
+import leetcode.PathSum_113;
 import practice.Practice;
 
 @SuppressWarnings({"unused", "resource"})
@@ -91,6 +92,7 @@ public class BinaryTreeMainProgram {
 					case 33:deleteNode(root);break;
 					case 34:checkBstOrBt(root);break;
 					case 35:flattenBTtoLL(root);break;
+					case 36:preInPostTraversal(root);break;
 					case 100:printTree(root);break;
 					default :System.out.println("program terminated :-((");System.exit(0);
 					
@@ -229,6 +231,12 @@ public class BinaryTreeMainProgram {
 		System.out.println(verticalOrderTraversal);
 		
 	}
+	
+	private static void preInPostTraversal(Node current) {
+		TreeTraversal tt = new TreeTraversal();
+		tt.preInPostTraversal(current);
+		
+	}
 
 	private static void maximunDepth(Node current) {
 		int max_depth = max_depth(current);
@@ -294,6 +302,10 @@ public class BinaryTreeMainProgram {
 		PathSum_112 pathSum = new PathSum_112();
 		boolean hasPathSum = pathSum.hasPathSum(root2, sum);
 		System.out.println(hasPathSum);
+		
+		PathSum_113 pathSum2 = new PathSum_113();
+		List<List<Integer>> pathSum3 = pathSum2.pathSum(root2, sum);
+		System.out.println(pathSum3);
 	}
 	
 	private static void printTree(Node root2) {
@@ -414,10 +426,6 @@ public class BinaryTreeMainProgram {
 		MorrisTravel morrisTravel = new MorrisTravel();
 		List<Integer> inOrder = morrisTravel.inOrder(root2);
 		System.out.println("In-Order : "+ inOrder);
-		
-		Practice name = new Practice();
-		List<Integer> inOrder2 = name.inOrder(root2);
-		System.out.println("In-Order2 : "+ inOrder2);
 		
 		List<Integer> preOrder = morrisTravel.preOrder(root2);
 		System.out.println("Pre-Order : "+ preOrder);

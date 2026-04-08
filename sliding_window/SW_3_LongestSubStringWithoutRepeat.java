@@ -5,11 +5,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 // leetcode 3
-public class LongestSubStringWithoutRepeat {
+public class SW_3_LongestSubStringWithoutRepeat {
 
 	public static void main(String[] args) {
-		String s = "abcabcbb";
-		int len = lengthOfLongestSubstring(s);
+		String s = "abcdabcdebb";
+		int len = lengthOfLongestSubstring1(s);
 		System.out.println(len);
 		
 		int disctLen = findDisctLen(s);

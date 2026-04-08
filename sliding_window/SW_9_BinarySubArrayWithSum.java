@@ -1,8 +1,8 @@
 package sliding_window;
 
 
-// lletcode 930
-public class BinarySubArrayWithSum {
+// leetcode 930
+public class SW_9_BinarySubArrayWithSum {
 
 	public static void main(String[] args) {
 		int[] nums = {1, 0, 0, 1, 0, 1,0};

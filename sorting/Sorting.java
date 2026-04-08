@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Sorting {
 	 public static void main(String[] args) {
 		
-		 int ar[]={8, 4, 5, 9, 2, 11, 6, 7};
+		 int ar[]={8, 4, 5, 9, 2};
 		 Scanner scan=new Scanner(System.in);
 			while(true) {
 				System.out.println("press 1 to Bubble Sort");
@@ -68,13 +68,16 @@ public class Sorting {
 
 	/*
 	  * Heap sort starts
+	  * TC O(n) + O(nlog n)
 	  */
 	 private static void heap_sort(int[] ar) {
 		 int n=ar.length;
+		 //TC O(n)
 		 for(int i=n/2-1 ; i>=0; i--){
 			 heapify(ar,n,i);
 		 }
 		 
+		 // TC O(nlog n)
 		 for( int i=n-1 ; i>=0 ; i--){
 			 int temp=ar[0];
 			 ar[0]=ar[i];
@@ -169,17 +172,17 @@ public class Sorting {
 			int item,j;
 			for(int i=0 ; i<arr.length ; i++) {
 				item=arr[i];
-				for( j=i-1 ; j>=0 && arr[j]>item ; --j) {
-					arr[j+1]=arr[j];
-				}
-				arr[j+1]=item;
-//				j=i-1;
-//				while(j>=0 && arr[j]>item) {
-//					int t=arr[j+1];
+//				for( j=i-1 ; j>=0 && arr[j]>item ; --j) {
 //					arr[j+1]=arr[j];
-//					arr[j]=t;
-//					--j;
 //				}
+//				arr[j+1]=item;
+				j=i-1;
+				while(j>=0 && arr[j]>item) {  // item == arr[j+1]
+					int t=arr[j+1];
+					arr[j+1]=arr[j];
+					arr[j]=t;
+					--j;
+				}
 			}
 			System.out.println(Arrays.toString(arr));
 	}
@@ -190,7 +193,7 @@ public class Sorting {
 		for(int i=0;i<ar.length ;i++){
 			k=i;
 			for(j=i;j<ar.length;j++){
-				if(ar[k]>ar[j]){
+				if(ar[j]<ar[k]){
 					k=j;
 				}
 			}
