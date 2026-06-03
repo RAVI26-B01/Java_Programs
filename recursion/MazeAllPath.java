@@ -44,7 +44,7 @@ public class MazeAllPath {
         if(r == maze.length-1 && c == maze[0].length-1){  
             pathArr[r][c]=count;
             for(int[] ar:pathArr)
-            System.out.println(Arrays.toString(ar));
+            	System.out.println(Arrays.toString(ar));
             
             System.out.println(path);
             System.out.println();

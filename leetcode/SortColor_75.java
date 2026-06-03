@@ -6,37 +6,54 @@ public class SortColor_75 {
 
 	public static void main(String[] args) {
 
-		int[] ar = {2,0,2,1,1,0, 1,0};
-		sortColors(ar);
+		int n = 41;
+		System.out.println(steps(n));
 
 	}
 	
-	   public static void sortColors(int[] nums) {
-	        int i=0;
-	        int j= nums.length - 1;
-	        int k=0;
-	        while(k<=j ){
-	            if(nums[k]==0){
-	            	int temp = nums[k];
-	            	nums[k] = nums[i];
-	            	nums[i]= temp;
-	            	i++;
-	            	k++;
-	            }
-	            else if( nums[k] == 1){
-	            	k++;
-	            }
-	            else {
+	   private static int steps(int n) {
+		return helper(n , 0);
+	}
 
-	            	int temp = nums[k];
-	            	nums[k] = nums[j];
-	            	nums[j]= temp;
-	            	j--;
-	            }
-	            
-	        }
-	        
-	        System.out.println(Arrays.toString(nums));
-	    }
+	private static int helper(int n, int c) {
+		if(n==0)
+			return c;
+		if(n%2 == 0)
+			return helper(n/2, c+1);
+		else
+			return helper(n-1, c+1);
+	}
+
+	private static int sumOfDigits(int n) {
+		   if(n <= 0 )
+			   return 0;
+		   
+		return sumOfDigits(n/10)+ n%10;
+	}
+
+	public static void sortColors(int[] ar) {
+			int n = ar.length;
+			int low = 0 ;
+			int high = n-1;
+			int mid = 0;
+			
+			while(mid<=high) {
+				if(ar[mid]==0){
+					int temp = ar[low];
+					ar[low]=ar[mid];
+					ar[mid]=temp;
+					low++;mid++;
+				}
+				else if(ar[mid]==1){
+					mid++;
+				}
+				else{
+					int temp = ar[high];
+					ar[high]=ar[mid];
+					ar[mid]=temp;
+					high--;
+				}
+			}
+		}
 
 }
