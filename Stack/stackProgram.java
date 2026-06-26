@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class stackProgram {
 
 	public static void main(String[] args) {
-		Stack s=new Stack();
+		Stack1 s=new Stack1();
 		Scanner scan=new Scanner(System.in);
 		while(true) {
 		System.out.println("press 1 to push");
@@ -25,7 +25,7 @@ public class stackProgram {
 	}
 }
 
-class Stack{
+class Stack1{
 	int size=5;
 	int my_stack[]=new int[5];
 	int top=-1;

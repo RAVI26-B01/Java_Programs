@@ -185,6 +185,10 @@ class abc{
 	public void setDept(int dept) {
 		this.dept = dept;
 	}
+	@Override
+	public String toString() {
+		return "abc [id=" + id + ", name=" + name + ", dept=" + dept + "]";
+	}
 	
 	
 	
