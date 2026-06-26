@@ -199,5 +199,13 @@ public class JavaStreams2 {
 		Student student = list.stream().sorted(Comparator.comparing(Student::getRank)).skip(1).findFirst().get();
 		System.out.println("Second highest rank student  : "+student);
 		
+		
+		List<Student> sortedNameRank = list.stream().sorted(Comparator.comparing(Student::getFirstName).thenComparing(Student::getRank)).toList();
+		System.out.println("Sort students based on name and rank : " + sortedNameRank);
+		
+		List<Student> sortedNameLength = list.stream().sorted(Comparator.comparingInt(s-> s.getFirstName().length())).toList();
+		System.out.println("Sort students based on name length : " + sortedNameLength);
+		
+		
 	}
 }

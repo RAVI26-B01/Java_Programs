@@ -1,7 +1,13 @@
-package practice;
+package theory_practice;
 
-public class Practice{
-	
+/*
+   Thread.sleep(5000) is not required to create a deadlock.
+   It simply increases the likelihood that both threads acquire their first lock before trying to acquire the second lock, 
+   making the deadlock easy to reproduce consistently.
+ */
+
+public class DeadLock extends Thread{
+
 	private static final Object lock1 = new Object();
 	private static final Object lock2 = new Object();
 	
@@ -11,7 +17,6 @@ public class Practice{
 		Thread thread2 = new Thread(new Thread2());
 		thread1.start();
 		thread2.start();
-		
 	}
 	
 	static class Thread1 implements Runnable{
@@ -34,7 +39,6 @@ public class Practice{
 				}
 			}
 		}
-		
 	}
 	
 	static class Thread2 implements Runnable{
@@ -57,7 +61,6 @@ public class Practice{
 				}
 			}
 		}
-		
 	}
-	
+
 }

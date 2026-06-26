@@ -6,11 +6,13 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Map.Entry;
 import java.util.OptionalDouble;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
  
 public class JavaStreams {
@@ -81,6 +83,21 @@ public class JavaStreams {
 		String s="raghureddy";
 		Map<Object, Long> collect6 = s.chars().mapToObj(x->(char)x).collect(Collectors.groupingBy(x->x, LinkedHashMap::new, Collectors.counting()));
 		System.out.println("key value pair: "+collect6);
+		
+		
+		String[] strArr = {"ravi","raj",""," ","king",null};
+		String[] array = Arrays.stream(strArr)
+				.filter(Objects::nonNull)
+				.filter(x-> x!=null && !x.isBlank() ).toArray(String[]::new);
+		System.out.println("Remove all the String having empty and blank values : " +Arrays.toString(array));
+		
+		
+		// arrays contains the number between 1 to 9 find all missing numbers
+		int[] intArr = {1,4,3,5,2,8,3};
+		Set<Integer> uniqueSet = Arrays.stream(intArr).boxed().collect(Collectors.toSet());
+		int[] array2 = IntStream.rangeClosed(1, 9).filter(i-> !uniqueSet.contains(i)).toArray();
+		System.out.println("Print missing number between 1 to 9 : "+Arrays.toString(array2));
+	
 		
 		List<abc> l = new ArrayList<>();
 		l.add(new abc(1,"xyz",2));
