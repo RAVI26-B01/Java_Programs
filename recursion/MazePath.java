@@ -5,7 +5,7 @@ public class MazePath {
     public static void main(String[] args) {
 //         int count = pathCount(4, 4);
 //         System.out.println(count);
-        // pathPrint("", 3, 3);
+         pathPrint("", 3, 3);
 //         pathDiagonalPrint("", 3, 3);
 
         boolean[][] maze={
@@ -13,7 +13,7 @@ public class MazePath {
             {false,true,true},
             {true,true,true}
         };
-        pathRestriction("",maze, 0, 0);
+//        pathRestriction("",maze, 0, 0);
     }
 
 

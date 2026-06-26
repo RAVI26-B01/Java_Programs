@@ -1,5 +1,6 @@
 package leetcode;
 
+// Atmost 2 consecutive elements can be same
 public class RemoveDuplicate_80 {
 
 	public static void main(String[] args) {

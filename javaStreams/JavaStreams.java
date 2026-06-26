@@ -1,4 +1,4 @@
-package practice;
+package javaStreams;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -169,6 +169,16 @@ public class JavaStreams {
          Set<Entry<Boolean, List<Integer>>> entrySet = oddEvenNumbersMap.entrySet();
          System.out.println("Odd and Even Numbers : "+ entrySet);
          System.out.println("Odd and Even Numbers : "+ oddEvenNumbersMap);
+         
+         Map<Object, Object> collect7 = l.stream().collect(Collectors.groupingBy(x->x.getDept(), Collectors.counting()))
+        		 .entrySet().stream().sorted(Map.Entry.comparingByValue()).collect(Collectors.toMap(
+        			        Map.Entry::getKey,
+        			        Map.Entry::getValue,
+        			        (a,b)->a,
+        			        LinkedHashMap::new
+        			));
+         
+        		    System.out.println(collect7);
 	}
  
 }
