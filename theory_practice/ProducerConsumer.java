@@ -1,12 +1,9 @@
-package practice;
+package theory_practice;
 
 import java.util.LinkedList;
-import java.util.Locale.Category;
-import java.util.Map.Entry;
 import java.util.Queue;
 
 class SharedBuffer{
-
 
 	private final Queue<Integer> queue = new LinkedList<>();
 	final int bufferSize = 5;
@@ -64,8 +61,6 @@ public class ProducerConsumer {
 		                Thread.currentThread().interrupt();
 		            }
 		        });
-
-		       
 
 		        producer.start();
 		        consumer.start();
