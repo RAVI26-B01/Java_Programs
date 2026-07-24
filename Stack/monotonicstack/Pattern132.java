@@ -8,6 +8,9 @@ public class Pattern132 {
 		int[] nums = {1,2,3,4};
 		
 		System.out.println(find132pattern(nums));
+		
+		int[] nums2 = {-1,3,2,0};
+		System.out.println(find132pattern(nums2));
 	}
 
 	 public static boolean find132pattern(int[] nums) {

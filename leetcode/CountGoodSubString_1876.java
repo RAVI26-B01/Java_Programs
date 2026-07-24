@@ -34,4 +34,22 @@ public class CountGoodSubString_1876 {
             
             return true;
     }
+    
+    
+    public int countGoodSubstrings2(String s) {
+        char[] charArray = s.toCharArray();
+        int result = 0;
+
+        for(int i=0; i+2<charArray.length; i++){
+            char c1 = charArray[i];
+            char c2 = charArray[i+1];
+            char c3 = charArray[i+2];
+            if(c1!=c2 && c2!=c3 && c3!=c1){
+                result++;
+            }
+        }
+
+        return result;
+        
+    }
 }

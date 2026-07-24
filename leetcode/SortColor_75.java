@@ -2,33 +2,19 @@ package leetcode;
 
 import java.util.Arrays;
 
+/*
+	0 ... low-1      -> all 0s
+	low ... mid-1    -> all 1s
+	mid ... high     -> unknown (to be processed)
+	high+1 ... n-1   -> all 2s
+ */
 public class SortColor_75 {
 
 	public static void main(String[] args) {
+		int[] ar = {2,0,2,1,1,0};
+		sortColors(ar);
+		System.out.println(Arrays.toString(ar));
 
-		int n = 41;
-		System.out.println(steps(n));
-
-	}
-	
-	   private static int steps(int n) {
-		return helper(n , 0);
-	}
-
-	private static int helper(int n, int c) {
-		if(n==0)
-			return c;
-		if(n%2 == 0)
-			return helper(n/2, c+1);
-		else
-			return helper(n-1, c+1);
-	}
-
-	private static int sumOfDigits(int n) {
-		   if(n <= 0 )
-			   return 0;
-		   
-		return sumOfDigits(n/10)+ n%10;
 	}
 
 	public static void sortColors(int[] ar) {

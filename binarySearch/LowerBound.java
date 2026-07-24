@@ -6,7 +6,6 @@ package binarySearch;
  The lower bound is the smallest index, ind, where arr[ind] >= x
  */
 public class LowerBound {
-
 	public static void main(String[] args) {
 		int[] arr = {3, 5, 8, 15, 19};
         int n = 5, x = 9;

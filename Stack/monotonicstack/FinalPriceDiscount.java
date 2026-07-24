@@ -8,7 +8,7 @@ public class FinalPriceDiscount {
 
 	public static void main(String[] args) {
 		int[]	prices = {8,7,4,2,8,1,7,7,10,1};
-		//1,3,2,1,7,0,0,6,9,1
+						//1,3,2,1,7,0,0,6,9,1
 		System.out.println(Arrays.toString(finalPrices(prices)));
 	}
 	

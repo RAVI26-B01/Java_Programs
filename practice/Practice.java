@@ -1,52 +1,33 @@
 package practice;
 
-<<<<<<< HEAD
-public class Practice{
-	public static void main(String[] args) {
-		
-		int n = 12345;
-		int sumOfDigits = sumOfDigits(n);
-		System.out.println(sumOfDigits);
-	}
+import java.util.Arrays;
+import java.util.Stack;
 
-	private static int sumOfDigits(int n) {
-		
-		if(n<=0)
-			return 0;
-		return n%10 + sumOfDigits(n/10);
-	}
-
-}
-=======
 public class Practice {
 	public static void main(String[] args) {
-	  String s = ".,";
-	  boolean palindrome = isPalindrome(s);
-	  System.out.println(palindrome);
+		
+		int[] ar = {5,7,9,6,7,4,5,1,3,7};
+				//	7,9,-1,7,-1,5,7,3,7,-1
+		findNextLarge(ar);
+		System.out.println(Arrays.toString(ar));
+	
 	}
-	
-	public static boolean isPalindrome(String s) {
-        char[] chArr = s.toCharArray();
-        int l = 0;
-        int r = chArr.length-1;
 
-        while(l<r){
-            if(!Character.isAlphabetic(chArr[l]))
-            	l++;
-            if( !Character.isAlphabetic(chArr[r]))
-            	r--;
-            else{
-	            if(Character.toLowerCase(chArr[l]) != Character.toLowerCase(chArr[r])) {
-	            	return false;
-	            }
-	            l++;r--;
-            }
-           
-            	
-            
-        }
-		return true;
-    }
-	
+	private static void findNextLarge(int[] ar) {
+		Stack<Integer> stack = new Stack<>();
+		int n = ar.length;
+		
+		for(int i = n-1 ; i >=0 ; i--) {
+			int temp = ar[i];
+			while(!stack.isEmpty() && stack.peek()<=temp)
+				stack.pop();
+			if(!stack.isEmpty())
+				ar[i]=stack.peek();
+			else
+				ar[i]=-1;
+			stack.push(temp);
+		}
+	}
+
+
 }
->>>>>>> 2f11a8c28949928787b171149213865319e761d1

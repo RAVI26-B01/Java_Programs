@@ -9,25 +9,30 @@ public class FirstAndLastPosition_34 {
 		System.out.println(Arrays.toString(searchRange(nums, target)));
 	}
 	
-	 public static int[] searchRange(int[] nums, int target) {
-		 	int low = 0 ;
-		 	int high = nums.length-1;
-		 	
-		 	while(low<=high) {
-		 		int mid = (low+high)/2;
-		 		
-		 		if(nums[mid] == target) {
-		 			if(mid+1<nums.length && nums[mid]==nums[mid+1])
-		 				 return new int[] {mid ,mid+1};
-		 			return new int[] {mid ,mid};
-		 		}
-		 		
-		 		if(nums[mid]<target)
-		 			low = mid+1;
-		 		else
-		 			high = mid -1;
-		 	}
-		 
-	        return new int[] {-1,-1};
-	    }
+	public static int[] searchRange(int[]nums,int target){
+		  int first=findPosition(nums,target,true);
+		  int last=findPosition(nums,target,false);
+		  return new int[]{first,last};
+		 }
+	
+	 public static int findPosition(int[] nums, int target, boolean findFirst) {
+		 int left=0, right=nums.length-1, pos=-1;
+		  while(left<=right){
+			   int mid=left+(right-left)/2;
+			   
+			   if(nums[mid]==target){
+				    pos=mid;
+				    if(findFirst){
+				    	right=mid-1;
+				    }else{
+				    	left=mid+1;
+				    }
+			   }else if(nums[mid]<target){
+				   left=mid+1;
+			   }else{
+				   right=mid-1;
+			   }
+		}
+		return pos;
+	 }
 }

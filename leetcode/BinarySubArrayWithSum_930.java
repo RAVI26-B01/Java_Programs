@@ -9,7 +9,7 @@ public class BinarySubArrayWithSum_930 {
 		System.out.println(count);
 	}
 	/*
-	 	TC : O(2*2N) ==> O(N)
+	 	TC : O(2*2N) ==> O(4N)
 	 	SC : O(1)
 	 
 	 */
@@ -22,7 +22,8 @@ public class BinarySubArrayWithSum_930 {
 	/*
 	 
 	 below function find less than equal to goal(<= goal)
-	 		
+	 	TC : O(2N) ==> O(4N)
+	 	SC : O(1)	
 	 */
 	 private static int countSubArray(int nums[], int goal){
 	        int len = nums.length;
