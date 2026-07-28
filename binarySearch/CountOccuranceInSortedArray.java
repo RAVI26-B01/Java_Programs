@@ -1,6 +1,6 @@
 package binarySearch;
 
-public class CountOccurance {
+public class CountOccuranceInSortedArray {
 
     public static int firstOccurrence(int[] arr, int n, int k) {
         int low = 0, high = n - 1;

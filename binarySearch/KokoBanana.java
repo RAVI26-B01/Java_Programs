@@ -41,17 +41,20 @@ public class KokoBanana {
         return maxi;
     }
 
-    public static int calculateTotalHours(int[] v, int hourly) {
-        int totalH = 0;
-        int n = v.length;
+    public static int calculateTotalHours(int[] piles, int hourly) {
+        int hours = 0;
         //find total hours:
-        for (int i = 0; i < n; i++) {
-            totalH += Math.ceil((double)(v[i]) / (double)(hourly));
+        for (int pile : piles) {
+        	hours += Math.ceil((double)(pile) / (double)(hourly));
         }
-        return totalH;
+        return hours;
     }
     
     
+   /*
+	    This uses the formula for ceiling division:
+		pile/mid =  (pile+mid−1)/mid
+    */
     //approach 2
     public static int minEatingSpeed2(int[] piles, int h) {
         int low = 1, high = Arrays.stream(piles).max().getAsInt();

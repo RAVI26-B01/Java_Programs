@@ -1,33 +1,74 @@
 package practice;
 
-import java.util.Arrays;
-import java.util.Stack;
-
 public class Practice {
 	public static void main(String[] args) {
-		
-		int[] ar = {5,7,9,6,7,4,5,1,3,7};
-				//	7,9,-1,7,-1,5,7,3,7,-1
-		findNextLarge(ar);
-		System.out.println(Arrays.toString(ar));
-	
+
+		 int[] arr =  {2, 4, 6, 8, 8, 8,8, 11, 13};
+	        int n = 8, x = 8;
+	        int ans = count(arr, n, x);
+	        System.out.println("The number of occurrences is: " + ans);
 	}
 
-	private static void findNextLarge(int[] ar) {
-		Stack<Integer> stack = new Stack<>();
-		int n = ar.length;
+	private static int count(int[] arr, int n, int target) {
+		int[] firstandLast = findFirstandLast(arr, n , target);
+		if(firstandLast[0]==-1)return 0;
+		 return firstandLast[1]-firstandLast[0]+1;
+	}
+
+	private static int[] findFirstandLast(int[] arr, int n, int target) {
+		int first = findFirst(arr, n , target);
+		if(first == -1)
+			return new int[] {-1,-1};
+		int last = findlast(arr, n , target);
+		return new int[] {first,last};
 		
-		for(int i = n-1 ; i >=0 ; i--) {
-			int temp = ar[i];
-			while(!stack.isEmpty() && stack.peek()<=temp)
-				stack.pop();
-			if(!stack.isEmpty())
-				ar[i]=stack.peek();
+	}
+
+	private static int findFirst(int[] arr, int n, int target) {
+		
+		int low = 0 ; 
+		int high = n-1;
+		int first = -1;
+		while(low<=high) {
+			int mid = (low+high)/2;
+			
+			if(arr[mid]==target) {
+				first = mid;
+				high = mid-1;
+			}
+			else if(arr[mid] > target) {
+				high = mid - 1;
+			}
 			else
-				ar[i]=-1;
-			stack.push(temp);
+			{
+				low = mid+1;
+			}
 		}
+		return first;
+		
 	}
 
-
+private static int findlast(int[] arr, int n, int target) {
+		
+		int low = 0 ; 
+		int high = n-1;
+		int last = -1;
+		while(low<=high) {
+			int mid = (low+high)/2;
+			
+			if(arr[mid]==target) {
+				last = mid;
+				low = mid+1;
+			}
+			else if(arr[mid] > target) {
+				high = mid - 1;
+			}
+			else
+			{
+				low = mid+1;
+			}
+		}
+		return last;
+		
+	}
 }
