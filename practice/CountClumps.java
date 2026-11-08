@@ -2,7 +2,7 @@ package practice;
 
 public class CountClumps {
 	public static void main(String[] args) {
-		int[] ar = {1,2,2,3,4,4};
+		int[] ar = {1,2,2,2,3,4,4};
 		
 		int count = count(ar);
 		System.out.println(count);

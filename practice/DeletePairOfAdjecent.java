@@ -6,7 +6,7 @@ public class DeletePairOfAdjecent {
 
 	public static void main(String[] args) {
 
-		String s = "aaabbccaddd";
+		String s = "aaabbccadddc";
 
 		String deletePair = deletePair(s);
 		System.out.println(deletePair);

@@ -147,12 +147,18 @@ public class JavaStreams2 {
 		Map<String, List<Student>> mapData = list.stream().collect(Collectors.groupingBy(Student::getDepartmantName));
 		System.out.println("Students grouped by the department names : "+mapData);
 			
+		Map<String, Map<String, List<Student>>> mapData2 = list.stream().collect(Collectors.groupingBy(Student::getDepartmantName,Collectors.groupingBy(Student::getCity)));
+		System.out.println("Students grouped by the department names and city : "+mapData2);
+		
 		long countStudent = list.stream().count();
 		System.out.println("Total count of students : "+countStudent);
 		Student student2 = list.stream().max((x,y)->Integer.valueOf(x.getAge()).compareTo(Integer.valueOf(y.getAge()))).get();
 		System.out.println("Max age of student : "+student2.getAge()); 
 		OptionalInt maxAge = list.stream().mapToInt(Student::getAge).max();
 		System.out.println("Max age of student : "+maxAge.getAsInt());
+		Student student3 = list.stream().max(Comparator.comparing(Student::getAge)).get();
+		System.out.println("Max age of student : "+student3.getAge());
+		
 		
 		List<String> lstDepartments = list.stream().map(dt -> dt.getDepartmantName()).distinct()
 			    .collect(Collectors.toList());

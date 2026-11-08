@@ -27,7 +27,7 @@ public class DeadLock extends Thread{
 				System.out.println("thread1 acquired lock 1");
 				
 				try {
-					Thread.sleep(5000);
+					Thread.sleep(2000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -49,7 +49,7 @@ public class DeadLock extends Thread{
 				System.out.println("thread2 acquired lock 2");
 				
 				try {
-					Thread.sleep(5000);
+					Thread.sleep(2000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

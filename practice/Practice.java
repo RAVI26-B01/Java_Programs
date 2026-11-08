@@ -1,74 +1,63 @@
 package practice;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 public class Practice {
+
 	public static void main(String[] args) {
 
-		 int[] arr =  {2, 4, 6, 8, 8, 8,8, 11, 13};
-	        int n = 8, x = 8;
-	        int ans = count(arr, n, x);
-	        System.out.println("The number of occurrences is: " + ans);
-	}
-
-	private static int count(int[] arr, int n, int target) {
-		int[] firstandLast = findFirstandLast(arr, n , target);
-		if(firstandLast[0]==-1)return 0;
-		 return firstandLast[1]-firstandLast[0]+1;
-	}
-
-	private static int[] findFirstandLast(int[] arr, int n, int target) {
-		int first = findFirst(arr, n , target);
-		if(first == -1)
-			return new int[] {-1,-1};
-		int last = findlast(arr, n , target);
-		return new int[] {first,last};
+		List<Integer> listOfIntegers = Arrays.asList(71, 18, 42, 21, 67, 32, 95, 14, 56, 87);
+		Map<Boolean,List<Integer>> collect = listOfIntegers.stream().collect(Collectors.partitioningBy(x->x%2==0));
+		System.out.println(collect);
 		
 	}
 
-	private static int findFirst(int[] arr, int n, int target) {
+	private static List<List<Integer>> threeSum(int[] nums) {
+
+		Arrays.sort(nums);
+		int n = nums.length;
+		List<List<Integer>> ans = new ArrayList<>();
 		
-		int low = 0 ; 
-		int high = n-1;
-		int first = -1;
-		while(low<=high) {
-			int mid = (low+high)/2;
-			
-			if(arr[mid]==target) {
-				first = mid;
-				high = mid-1;
-			}
-			else if(arr[mid] > target) {
-				high = mid - 1;
-			}
-			else
-			{
-				low = mid+1;
-			}
+		for(int i = 0 ; i<n-2 ; i++) {
+			 if(i>0 && nums[i]==nums[i-1])
+				 continue;
+			 if(nums[i]>0)
+				 break;
+			 
+			 int j = i+1;
+			 int k = n-1;
+			 while(j<k) {
+				 int sum = nums[i]+nums[j]+nums[k];
+				 if(sum>0) {
+					 k--;
+				 }
+				 else if(sum<0) {
+					 j++;
+				 }
+				 else {
+					 ans.add(Arrays.asList(nums[i],nums[j],nums[k]));
+					 j++;
+					 k--;
+					 
+					 while(j<k && nums[j]==nums[j-1])
+						 j++;
+					 while(j<k && nums[k]==nums[k+1])
+						 k--;
+				 }
+			 }
 		}
-		return first;
-		
-	}
-
-private static int findlast(int[] arr, int n, int target) {
-		
-		int low = 0 ; 
-		int high = n-1;
-		int last = -1;
-		while(low<=high) {
-			int mid = (low+high)/2;
-			
-			if(arr[mid]==target) {
-				last = mid;
-				low = mid+1;
-			}
-			else if(arr[mid] > target) {
-				high = mid - 1;
-			}
-			else
-			{
-				low = mid+1;
-			}
-		}
-		return last;
-		
+		return ans;
 	}
 }
+
+
+
+
+
+
+
+

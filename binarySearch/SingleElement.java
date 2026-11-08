@@ -5,11 +5,13 @@ public class SingleElement {
 	public static void main(String[] args) {
 		int[]  nums = {1,1,2,3,3,4,4,8,8};
 		System.out.println(singleNonDuplicate(nums));
-		int[] nums2 = {3,3,7,7,10,11,11};
+		int[] nums2 = {3,3,7,7,11,11,12,13,13};
 		System.out.println(singleNonDuplicate(nums2));
 		
 	}
 	
+	// (even, odd) == same --> element lies on right half
+	// (odd, even) == same --> element lies on left half
 	public static int singleNonDuplicate(int[] nums) {
         // initilaize the left and right pointer
         int l = 0;

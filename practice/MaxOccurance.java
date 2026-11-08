@@ -17,14 +17,14 @@ public class MaxOccurance {
 	                result.append(c);   
 	            } 
 	            else if (frequency == maxFrequency) {
-	                result.append("$").append(c);
+	                result.append(c);
 	            }
 	        }
 	        return result.toString();
 	    }
 
 	    public static void main(String[] args) {
-	        String input = "abcaabbcc";
+	        String input = "abcaabbc";
 	        String result = getMaxOccurrenceCharacters(input);
 	        System.out.println("Character(s) with the maximum occurrence: " + result);
 	    }

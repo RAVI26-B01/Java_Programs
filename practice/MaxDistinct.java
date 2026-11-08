@@ -11,7 +11,6 @@ public class MaxDistinct {
 		Set<Character> set = new HashSet<>();
 		for(int i = 0 ; i<s.length() ; i++) {
 			if(set.add(s.charAt(i))) {
-				set.add(s.charAt(i));
 				count++;
 			}else {
 				set.clear();

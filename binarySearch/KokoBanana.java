@@ -59,7 +59,7 @@ public class KokoBanana {
     public static int minEatingSpeed2(int[] piles, int h) {
         int low = 1, high = Arrays.stream(piles).max().getAsInt();
 
-        while (low < high) {
+        while (low <= high) {
             int mid = low + (high - low) / 2;
             int hours = 0;
 
@@ -68,7 +68,7 @@ public class KokoBanana {
             }
 
             if (hours <= h) {
-                high = mid;
+                high = mid-1;
             } else {
                 low = mid + 1;
             }

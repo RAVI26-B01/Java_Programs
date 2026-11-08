@@ -74,6 +74,8 @@ public class JavaStreams3 {
        System.out.println("Sum Of Digits 15623 :" +sumOfDigits);
        int reduce = String.valueOf(i).chars().map(x->(x-'0')).sum();
        System.out.println("Sum Of Digits 15623 :" +reduce);
+       int sum2 = Integer.toString(i).chars().map(x->(x-'0')).sum();
+       System.out.println(sum2);
        
        List<Integer> listOfIntegers4 = Arrays.asList(45, 12, 56, 15, 24, 75, 31, 89);
        Integer secondLargestNumber = listOfIntegers4.stream().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();

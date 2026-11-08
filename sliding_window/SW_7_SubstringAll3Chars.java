@@ -1,7 +1,5 @@
 package sliding_window;
 
-import java.util.Arrays;
-
 public class SW_7_SubstringAll3Chars {
 
 	public static void main(String[] args) {

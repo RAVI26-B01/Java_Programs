@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class DaysToMBouquets_1482 {
 	public static void main(String[] args)  {
-		int[] bloomDay = {7,7,7,7,12,7,7};
+		int[] bloomDay = {7,7,7,11,12,7,7};
 		int m = 2;
-		int k = 3;
+		int k = 2;
 		System.out.println(minDays(bloomDay, m, k));
 	}
 	
@@ -20,8 +20,8 @@ public class DaysToMBouquets_1482 {
 		while(start<=end) {
 			
 			int mid = (start+end)/2;
-			int i = find(bloomDay, m , k, mid);
-			if(i >= m)
+			int possible = findPossible(bloomDay, m , k, mid);
+			if(possible >= m)
 				end=mid-1;
 			else
 				start = mid+1;
@@ -31,7 +31,7 @@ public class DaysToMBouquets_1482 {
 		return start;
     }
 
-	private static int find(int[] bloomDay, int m, int k, int mid) {
+	private static int findPossible(int[] bloomDay, int m, int k, int mid) {
 		int count =0;
 		int possible =0;
 		for(int bloom:bloomDay) {

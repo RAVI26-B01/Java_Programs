@@ -11,7 +11,7 @@ public class SearchInRotedArray_II {
             //if mid points the target
             if (arr[mid] == k) return true;
 
-            //!important Edge case:
+            //!important Edge case: to skip duplicate elements
             if (arr[low] == arr[mid] && arr[mid] == arr[high]) {
                 low = low + 1;
                 high = high - 1;
